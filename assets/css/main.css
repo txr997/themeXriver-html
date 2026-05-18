@@ -17873,6 +17873,26 @@ img.txa-team-bg-shape-2 {
   border: 1.5px solid #280265;
   border-radius: 24px;
   padding: 36px 16px;
+  position: relative;
+  z-index: 1;
+}
+.txa-price-4-card::after {
+  content: "";
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(119, 0, 239, 0.4) 0%, rgba(230, 0, 254, 0.4) 100%);
+  z-index: -2;
+  position: absolute;
+  border-radius: 24px;
+  opacity: 1;
+}
+.txa-price-4-card .bg-dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
 }
 .txa-price-4-card p, .txa-price-4-card h1, .txa-price-4-card h2, .txa-price-4-card h3, .txa-price-4-card h4, .txa-price-4-card h5, .txa-price-4-card h6, .txa-price-4-card span {
   margin-bottom: 0;
@@ -17882,30 +17902,35 @@ img.txa-team-bg-shape-2 {
   padding: 36px 20px;
   padding-top: 0;
 }
-.txa-price-4-card h4.p4-font.plan-name {
+.txa-price-4-card .plan-name {
   font-size: 22px;
   font-weight: 600;
   margin-bottom: 14px;
 }
-.txa-price-4-card p.p4-font.plan-disc {
+.txa-price-4-card .plan-disc {
   font-size: 18px;
   opacity: 80%;
   margin-bottom: 34px;
 }
-.txa-price-4-card h3.p3.plan-price {
+.txa-price-4-card .plan-price {
   font-size: 52px;
   line-height: 1;
   margin-bottom: 30px;
 }
-.txa-price-4-card span.price-amount {
+.txa-price-4-card .price-amount {
   font-weight: 700;
 }
-.txa-price-4-card span.price-dollar {
+.txa-price-4-card .price-dollar {
   font-weight: 300;
 }
-.txa-price-4-card span.price-period {
+.txa-price-4-card .price-period {
   font-size: 18px;
   opacity: 68%;
+}
+.txa-price-4-card .save-price-box {
+  height: 0px;
+  overflow: hidden;
+  transition: 600ms var(--cube-1);
 }
 .txa-price-4-card .dvr-line {
   width: 100%;
@@ -17915,6 +17940,80 @@ img.txa-team-bg-shape-2 {
 }
 .txa-price-4-card .assets-progress {
   margin-top: 32px;
+  margin-bottom: 24px;
+}
+.txa-price-4-card .assets-progress-title {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 12px;
+}
+.txa-price-4-card .assets-progress-title .title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 15px;
+  line-height: 1.5;
+}
+.txa-price-4-card .assets-progress-title .count-text {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.txa-price-4-card .assets-progress-title .count-total {
+  opacity: 60%;
+  font-weight: 400;
+}
+.txa-price-4-card .assets-progress-line {
+  height: 8px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 30px;
+  overflow: hidden;
+}
+.txa-price-4-card .assets-progress-line-bar {
+  background: var(--txa-gd-1);
+  height: 100%;
+  border-radius: 30px;
+}
+.txa-price-4-card .plan-btn {
+  text-align: center;
+  width: 100%;
+  display: block;
+  font-weight: 500;
+  font-size: 18px;
+  color: #fff;
+  background: #0A0A25;
+  box-shadow: inset 0px -8px 24px rgba(119, 0, 239, 0.65);
+  border-radius: 16px;
+  padding: 14px 15px;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 32px;
+  transition: 600ms var(--cube-1);
+}
+.txa-price-4-card .plan-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background: linear-gradient(45deg, #7700EF 0%, #E600FE 100%);
+  padding: 1px;
+  z-index: -1;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  inset: 0px;
+  transition: 600ms var(--cube-1);
+}
+.txa-price-4-card .plan-btn:hover {
+  background-color: #fff;
+  color: #02021E;
+}
+.txa-price-4-card .plan-btn:hover::before {
+  opacity: 1;
 }
 
 /* 

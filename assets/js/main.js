@@ -23,6 +23,8 @@ Version: 1.0
 // 	})
 // });
 
+
+
 $('.txa-product-details-content-show-more-btn').on('click', function () {
 	var $btn = $(this);
 	var wasActive = $btn.hasClass('has-active'); 
