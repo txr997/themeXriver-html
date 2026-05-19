@@ -206,3 +206,23 @@ if ($(".bg-dot circle").length) {
     });
 
 }
+
+// heart-shape
+gsap.utils.toArray(".heart-shape .smoke").forEach((smoke, i) => {
+    gsap.fromTo(smoke,
+        {
+            y: 15,
+            opacity: 1,
+            scale: 1
+        },
+        {
+            y: -75,
+            opacity: 0,
+            scale: 8,
+            duration: 5,
+            repeat: -1,
+            delay: i * 0.8,
+            ease: "power1.out"
+        }
+    );
+});

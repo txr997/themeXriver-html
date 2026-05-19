@@ -17780,13 +17780,13 @@ img.txa-team-bg-shape-2 {
 .txa-price-4-toggle:is(.active) .bg-shape {
   opacity: 0;
 }
-.txa-price-4-toggle:is(.active) .txa-price-3-toggle-text:is(.annually) {
+.txa-price-4-toggle:is(.active) .txa-price-4-toggle-text:is(.annually) {
   opacity: 1;
 }
 .txa-price-4-toggle:not(.active) .bg-shape-2 {
   opacity: 0;
 }
-.txa-price-4-toggle:not(.active) .txa-price-3-toggle-text:is(.monthly) {
+.txa-price-4-toggle:not(.active) .txa-price-4-toggle-text:is(.monthly) {
   opacity: 1;
 }
 .txa-price-4-toggle-text {
@@ -17863,10 +17863,25 @@ img.txa-team-bg-shape-2 {
   margin-bottom: 0;
   margin-right: -135px;
 }
+@media (max-width: 767px) {
+  .txa-price-4-toggle-save {
+    margin-right: 0;
+  }
+}
 .txa-price-4-grid {
   display: grid;
   gap: 18px;
   grid-template-columns: 1fr 1fr 1fr;
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px) {
+  .txa-price-4-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 767px) {
+  .txa-price-4-grid {
+    grid-template-columns: 1fr;
+  }
 }
 .txa-price-4-card {
   background: #0A0A25;
@@ -17875,6 +17890,8 @@ img.txa-team-bg-shape-2 {
   padding: 36px 16px;
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
 }
 .txa-price-4-card::after {
   content: "";
@@ -17885,7 +17902,8 @@ img.txa-team-bg-shape-2 {
   z-index: -2;
   position: absolute;
   border-radius: 24px;
-  opacity: 1;
+  opacity: 0;
+  transition: 600ms var(--cube-1);
 }
 .txa-price-4-card .bg-dot {
   position: absolute;
@@ -17893,6 +17911,8 @@ img.txa-team-bg-shape-2 {
   left: 0;
   width: 100%;
   z-index: -1;
+  opacity: 0;
+  transition: 600ms var(--cube-1);
 }
 .txa-price-4-card p, .txa-price-4-card h1, .txa-price-4-card h2, .txa-price-4-card h3, .txa-price-4-card h4, .txa-price-4-card h5, .txa-price-4-card h6, .txa-price-4-card span {
   margin-bottom: 0;
@@ -17901,6 +17921,12 @@ img.txa-team-bg-shape-2 {
 .txa-price-4-card .content-box {
   padding: 36px 20px;
   padding-top: 0;
+}
+@media only screen and (min-width: 1200px) and (max-width: 1399px), only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px), (max-width: 767px) {
+  .txa-price-4-card .content-box {
+    padding: 36px 5px;
+    padding-top: 0;
+  }
 }
 .txa-price-4-card .plan-name {
   font-size: 22px;
@@ -17915,7 +17941,7 @@ img.txa-team-bg-shape-2 {
 .txa-price-4-card .plan-price {
   font-size: 52px;
   line-height: 1;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 .txa-price-4-card .price-amount {
   font-weight: 700;
@@ -17931,6 +17957,18 @@ img.txa-team-bg-shape-2 {
   height: 0px;
   overflow: hidden;
   transition: 600ms var(--cube-1);
+  margin-bottom: 20px;
+}
+.txa-price-4-card .save-price-box .save-price {
+  font-size: 12px;
+  display: block;
+}
+.txa-price-4-card .save-price-box .save-price span {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 3px 9px;
+  display: inline-block;
+  border-radius: 6px;
+  margin-right: 7px;
 }
 .txa-price-4-card .dvr-line {
   width: 100%;
@@ -17957,6 +17995,9 @@ img.txa-team-bg-shape-2 {
   color: rgba(255, 255, 255, 0.72);
   font-size: 15px;
   line-height: 1.5;
+}
+.txa-price-4-card .assets-progress-title .title svg path {
+  transition: 600ms var(--cube-1);
 }
 .txa-price-4-card .assets-progress-title .count-text {
   font-size: 16px;
@@ -18014,6 +18055,142 @@ img.txa-team-bg-shape-2 {
 }
 .txa-price-4-card .plan-btn:hover::before {
   opacity: 1;
+}
+.txa-price-4-card .plan-included {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 32px;
+}
+.txa-price-4-card .plan-included li {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+  font-weight: 400;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.txa-price-4-card .plan-included li .icon {
+  flex: 0 0 auto;
+}
+.txa-price-4-card .plan-included li b {
+  color: #fff;
+  font-weight: 600;
+}
+.txa-price-4-card .plan-included li a {
+  color: var(--txa-pr-1);
+  transition: 600ms var(--cube-1);
+  position: relative;
+  z-index: 1;
+}
+.txa-price-4-card .plan-included li a::after {
+  content: "";
+  width: 0%;
+  background: var(--txa-pr-1);
+  height: 1px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transition: 600ms var(--cube-1);
+}
+.txa-price-4-card .plan-included li a:hover::after {
+  width: 100%;
+}
+.txa-price-4-card .plan-included li .text {
+  color: rgba(255, 255, 255, 0.8);
+}
+.txa-price-4-card .plan-included li:is(.has-disable) .text {
+  opacity: 40%;
+}
+.txa-price-4-card .update-box {
+  background: linear-gradient(180deg, rgba(230, 0, 254, 0.44) 0%, rgba(0, 0, 0, 0) 100%), #0A0A25;
+  border-radius: 18px;
+  padding: 20px 20px;
+  position: relative;
+  z-index: 1;
+  margin-top: auto;
+}
+.txa-price-4-card .update-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #62067B 100%);
+  padding: 1px;
+  z-index: -1;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  inset: -2px;
+}
+.txa-price-4-card .update-box .subtitle {
+  color: var(--txa-pr-1);
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: -5px;
+  margin-bottom: 5px;
+}
+.txa-price-4-card .update-box .title {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  margin-bottom: 11px;
+  transition: 600ms var(--cube-1);
+}
+.txa-price-4-card .update-box .title:hover {
+  color: var(--txa-pr-1);
+}
+.txa-price-4-card .update-box .categories-x-date {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.txa-price-4-card .update-box .categories {
+  font-size: 13px;
+  line-height: 1.5;
+  background-color: #7700EF;
+  font-weight: 400;
+  border-radius: 7px;
+  padding: 4px 12px;
+}
+.txa-price-4-card .update-box .date {
+  opacity: 72%;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.txa-price-4-card .tags {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  background: var(--txa-gd-1);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  border-radius: 0px 0px 16px 16px;
+  padding: 12px 17px;
+  z-index: 1;
+}
+.txa-price-4-card .heart-shape {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1;
+}
+.txa-price-4-card .heart-shape svg {
+  overflow: visible;
+}
+.txa-price-4-card .heart-shape .smoke {
+  filter: blur(2px);
+}
+.txa-price-4-card:hover::after {
+  opacity: 1;
+}
+.txa-price-4-card:hover .bg-dot {
+  opacity: 1;
+}
+.txa-price-4-card:hover .assets-progress-title .title svg path {
+  fill: #fff;
 }
 
 /* 
