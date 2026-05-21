@@ -318,10 +318,13 @@ $(function () {
 	popup-2-activation
 */
 document.addEventListener("DOMContentLoaded", function () {
-    const popup = document.querySelector(".txa-popup-2-area");
-    setTimeout(() => {
-        popup.classList.add("active");
-    }, 3000);
+	if($(".txa-popup-2-area").length) {
+		const popup = document.querySelector(".txa-popup-2-area");
+		setTimeout(() => {
+			popup.classList.add("active");
+		}, 3000);
+	}
+
 });
 
 /* 

@@ -226,3 +226,24 @@ gsap.utils.toArray(".heart-shape .smoke").forEach((smoke, i) => {
         }
     );
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    if (document.querySelector(".home_slider_2")) {
+        var home_slider_2 = new Swiper(".home_slider_2", {
+            loop: true,
+            speed: 1000,            
+            effect: "fade",
+            fadeEffect: { crossFade: true },
+            // autoplay: { delay: 4000 },
+            navigation: {
+                nextEl: ".home_slider_3_next",
+                prevEl: ".home_slider_3_prev",
+            },
+            on: {
+                init: function () {
+                    SlideTransition.init(this);
+                },
+            }
+        });
+    }
+});

@@ -18237,4 +18237,144 @@ img.txa-team-bg-shape-2 {
   mask-image: linear-gradient(to top, #000 10%, rgba(0, 0, 0, 0) 100%);
 }
 
+/* 
+    design-hub-3-start
+*/
+.wa_ani_image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.txa-dh-3-item {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  padding-top: 150px;
+  padding-bottom: 30px;
+}
+.txa-dh-3-item .bg-img {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+.txa-dh-3-item-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 196px;
+  justify-content: space-between;
+}
+.txa-dh-3-item-list {
+  align-self: end;
+}
+.txa-dh-3-item-list li {
+  font-size: 18px;
+  font-weight: 400;
+  color: #02021E;
+  padding: 12px 0px;
+  padding-left: 30px;
+  background-repeat: no-repeat;
+  margin-top: -2px;
+}
+.txa-dh-3-item-content .subtitle {
+  font-size: 26px;
+  font-weight: 600;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1%;
+  line-height: 1.153;
+  margin-bottom: -20px;
+  transition: 600ms var(--cube-1);
+  position: relative;
+  z-index: 1;
+}
+.txa-dh-3-item-content .subtitle span {
+  text-transform: capitalize;
+  color: #FD3F00;
+}
+.txa-dh-3-item-content .subtitle a {
+  transition: 600ms var(--cube-1);
+}
+.txa-dh-3-item-content .subtitle a:hover {
+  color: #FD3F00;
+  transition-delay: 0s;
+}
+.txa-dh-3-item-content .title {
+  font-size: 300px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -5%;
+  text-align: center;
+  margin-bottom: 0;
+  line-height: 1;
+  transition: 600ms var(--cube-1);
+}
+.txa-dh-3-item-content .title a {
+  display: inline-flex;
+  gap: 13px;
+}
+.txa-dh-3-item-content .title a .icon {
+  display: inline-flex;
+  align-items: self-start;
+  padding-top: 43px;
+}
+.txa-dh-3-item:is(.has-black-bg) .txa-dh-3-item-list li {
+  color: #fff;
+}
+.txa-dh-3-slider {
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+.txa-dh-3-slider .swiper-wrapper .swiper-slide .txa-dh-3-item-list li {
+  transition: 600ms var(--cube-1);
+  transform: translateX(50px);
+  opacity: 0;
+}
+.txa-dh-3-slider .swiper-wrapper .swiper-slide .txa-dh-3-item-content .subtitle {
+  transition: 600ms var(--cube-1);
+  transform: translateY(50px);
+  opacity: 0;
+}
+.txa-dh-3-slider .swiper-wrapper .swiper-slide .txa-dh-3-item-content .title {
+  transition: 600ms var(--cube-1);
+  transform: translateY(50px);
+  opacity: 0;
+}
+.txa-dh-3-slider .swiper-wrapper .swiper-slide:is(.swiper-slide-active) .txa-dh-3-item-list li {
+  transform: translateX(0px);
+  opacity: 1;
+  transition-delay: 2s;
+}
+.txa-dh-3-slider .swiper-wrapper .swiper-slide:is(.swiper-slide-active) .txa-dh-3-item-list li:nth-child(2) {
+  transition-delay: 2.2s;
+}
+.txa-dh-3-slider .swiper-wrapper .swiper-slide:is(.swiper-slide-active) .txa-dh-3-item-list li:nth-child(3) {
+  transition-delay: 2.4s;
+}
+.txa-dh-3-slider .swiper-wrapper .swiper-slide:is(.swiper-slide-active) .txa-dh-3-item-list li:nth-child(4) {
+  transition-delay: 2.6s;
+}
+.txa-dh-3-slider .swiper-wrapper .swiper-slide:is(.swiper-slide-active) .txa-dh-3-item-list li:nth-child(5) {
+  transition-delay: 2.8s;
+}
+.txa-dh-3-slider .swiper-wrapper .swiper-slide:is(.swiper-slide-active) .txa-dh-3-item-content .subtitle {
+  transform: translateY(0px);
+  opacity: 1;
+  transition-delay: 2s;
+}
+.txa-dh-3-slider .swiper-wrapper .swiper-slide:is(.swiper-slide-active) .txa-dh-3-item-content .title {
+  transform: translateY(0px);
+  opacity: 1;
+  transition-delay: 2.4s;
+}
+
+/* 
+    design-hub-3-end
+*/
+
 /*# sourceMappingURL=main.css.map */
