@@ -234,7 +234,7 @@ document.addEventListener("DOMContentLoaded", function () {
             speed: 1000,            
             effect: "fade",
             fadeEffect: { crossFade: true },
-            // autoplay: { delay: 4000 },
+            autoplay: { delay: 7000 },
             navigation: {
                 nextEl: ".home_slider_3_next",
                 prevEl: ".home_slider_3_prev",
@@ -247,3 +247,124 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
+
+
+
+
+gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
+
+
+
+// if (window.matchMedia("(min-width: 1600px)").matches) {
+// 	if ($("#txa-dh-3-item-gallery-svg-path").length) {
+
+// 		const members = gsap.utils.toArray(".txa-dh-3-item-gallery .single-img");
+// 		const path = document.querySelector("#txa-dh-3-item-gallery-svg-path");
+
+// 		gsap.set(members, {
+// 			autoAlpha: 0,
+//             // zIndex: index + 1
+// 		});
+
+// 		members.forEach((member, index) => {
+
+// 			let tl = gsap.timeline({
+// 				repeat: -1,
+// 				delay: index * .3,
+// 				defaults: {
+// 					ease: "none"
+// 				},
+
+// 			});
+
+// 			tl.to(member, {
+// 				autoAlpha: 1,
+// 				duration: 0.5
+// 			});
+
+// 			tl.to(member, {
+// 				duration: 2,
+// 				motionPath: {
+// 					path: path,
+// 					align: path,
+// 					alignOrigin: [0.5, 0.5],
+// 					autoRotate: false,
+// 					start: 0,
+// 					end: 1
+// 				},
+// 				ease: "linear",
+
+
+
+// 			}, "<");
+
+// 			tl.to(member, {
+// 				autoAlpha: 0,
+// 				duration: 0.8
+// 			}, "-=1");
+
+// 		});
+
+// 	}
+// }
+
+if (window.matchMedia("(min-width: 1200px)").matches) {
+
+	if ($("#txa-dh-3-item-gallery-svg-path").length) {
+
+		const members = gsap.utils.toArray(".txa-dh-3-item-gallery .single-img");
+		const path = document.querySelector("#txa-dh-3-item-gallery-svg-path");
+
+		const total = members.length;
+
+		gsap.set(members, {
+			autoAlpha: 0
+		});
+
+		members.forEach((member, index) => {
+
+			const zIndex = total - index;
+
+			let tl = gsap.timeline({
+				repeat: -1,
+				delay: index * 0.3,
+				defaults: {
+					ease: "none"
+				},
+
+				onStart: () => {
+					gsap.set(member, {
+						zIndex: zIndex
+					});
+				}
+			});
+
+			tl.to(member, {
+				autoAlpha: 1,
+				duration: 0.5
+			});
+
+			tl.to(member, {
+				duration: 2,
+				motionPath: {
+					path: path,
+					align: path,
+					alignOrigin: [0.5, 0.5],
+					autoRotate: false,
+					start: 0,
+					end: 1
+				},
+				ease: "linear"
+			}, "<");
+
+			tl.to(member, {
+				autoAlpha: 0,
+				duration: 0.8
+			}, "-=1");
+
+		});
+
+	}
+
+}
