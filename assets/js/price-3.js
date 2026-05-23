@@ -249,7 +249,7 @@ document.addEventListener("DOMContentLoaded", function () {
             speed: 1000,            
             effect: "fade",
             fadeEffect: { crossFade: true },
-            // autoplay: { delay: 7000 },
+            autoplay: { delay: 7000 },
             navigation: {
                 nextEl: ".home_slider_3_next",
                 prevEl: ".home_slider_3_prev",
