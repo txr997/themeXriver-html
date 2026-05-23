@@ -18504,5 +18504,141 @@ img.txa-team-bg-shape-2 {
 /* 
     design-hub-3-end
 */
+/* 
+    top-banner-2-start
+*/
+/* 
+    black-friday-start
+*/
+.txa-blf-2-banner-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.txa-blf-2-banner-counter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+}
+.txa-blf-2-banner-counter .dot-shape {
+  margin-bottom: 0;
+  font-size: 40px;
+  color: #fff;
+  font-weight: 700;
+  line-height: 1;
+  margin-top: -7px;
+}
+.txa-blf-2-banner-counter-single {
+  width: 60px;
+  height: 60px;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #5C03B5;
+  box-shadow: inset 0px 0px 5px #FFFFFF;
+  border-radius: 8px;
+}
+.txa-blf-2-banner-counter-single .number {
+  font-size: 28px;
+  color: #fff;
+  line-height: 1;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+.txa-blf-2-banner-counter-single .disc {
+  color: #FFFFFF;
+  line-height: 1;
+  font-size: 16px;
+  margin-bottom: 0;
+  font-weight: 400;
+  letter-spacing: -2%;
+}
+.txa-blf-2-banner-title {
+  font-size: 26px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -3%;
+  margin-bottom: 0;
+}
+@media only screen and (min-width: 1400px) and (max-width: 1599px), only screen and (min-width: 1200px) and (max-width: 1399px), only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px), (max-width: 767px) {
+  .txa-blf-2-banner-title {
+    font-size: 18px;
+  }
+}
+.txa-blf-2-banner-title span:nth-child(1) {
+  font-size: 36px;
+  color: #6DFF00;
+}
+@media only screen and (min-width: 1400px) and (max-width: 1599px), only screen and (min-width: 1200px) and (max-width: 1399px), only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px), (max-width: 767px) {
+  .txa-blf-2-banner-title span:nth-child(1) {
+    font-size: 18px;
+  }
+}
+.txa-blf-2-banner-title span:nth-child(2) {
+  font-size: 36px;
+  color: #FFE000;
+}
+@media only screen and (min-width: 1400px) and (max-width: 1599px), only screen and (min-width: 1200px) and (max-width: 1399px), only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px), (max-width: 767px) {
+  .txa-blf-2-banner-title span:nth-child(2) {
+    font-size: 18px;
+  }
+}
+.txa-blf-2-banner-btn {
+  display: inline-flex;
+  margin-left: auto;
+  font-size: 16px;
+  color: #090909;
+  font-weight: 500;
+  letter-spacing: -2%;
+  flex: 0 0 auto;
+  animation: blfKf2 0.5s ease-in-out infinite alternate;
+  background: linear-gradient(180deg, #54D800 0%, #ACFF77 100%);
+  border-radius: 100px;
+  padding: 10px 21px;
+  position: relative;
+  z-index: 1;
+  transition: 0.3s;
+}
+@media (max-width: 767px) {
+  .txa-blf-2-banner-btn {
+    margin-left: 0;
+  }
+}
+.txa-blf-2-banner-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 100px;
+  background: linear-gradient(180deg, #ACFF77 0%, #54D800 100%);
+  padding: 1px;
+  z-index: -1;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  inset: 0px;
+}
+.txa-blf-2-banner-btn:hover {
+  color: var(--txa-pr-1);
+  animation-play-state: paused;
+}
+
+@keyframes blfKf2 {
+  from {
+    -webkit-transform: rotate(3deg);
+    transform: rotate(3deg);
+  }
+  to {
+    -webkit-transform: rotate(-3deg);
+    transform: rotate(-3deg);
+  }
+}
+/* 
+    top-banner-2-end
+*/
 
 /*# sourceMappingURL=main.css.map */

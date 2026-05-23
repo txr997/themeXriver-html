@@ -269,7 +269,12 @@ var SlideTransition = (function () {
           'transformed += cubicBezier(aStartPosition, aControl0, aControl1, aEndPosition, tProgress);'
         ]
       },
-      { map: new THREE.Texture() }
+      {
+        map: Object.assign(new THREE.Texture(), {
+          minFilter: THREE.LinearFilter,
+          generateMipmaps: false
+        })
+      }
     );
 
     THREE.Mesh.call(this, geometry, material);
