@@ -18251,13 +18251,15 @@ img.txa-team-bg-shape-2 {
 
 .txa-dh-3-area {
   overflow: hidden;
+  position: relative;
+  z-index: 1;
 }
 .txa-dh-3-item {
   position: relative;
   z-index: 1;
   overflow: hidden;
   padding-top: 177px;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
 }
 .txa-dh-3-item .bg-img {
   position: absolute;
@@ -18268,7 +18270,7 @@ img.txa-team-bg-shape-2 {
 .txa-dh-3-item-wrap {
   display: flex;
   flex-direction: column;
-  gap: 66px;
+  gap: 43px;
   justify-content: space-between;
 }
 .txa-dh-3-item-wrap .top-content {
@@ -18325,7 +18327,7 @@ img.txa-team-bg-shape-2 {
   text-transform: uppercase;
   letter-spacing: -1%;
   line-height: 1.153;
-  margin-bottom: -5px;
+  margin-bottom: -30px;
   transition: 600ms var(--cube-1);
   position: relative;
   z-index: 1;
@@ -18340,6 +18342,9 @@ img.txa-team-bg-shape-2 {
   text-transform: capitalize;
   color: #FD3F00;
 }
+.txa-dh-3-item-content .subtitle span:is(.has-black) {
+  color: #000;
+}
 .txa-dh-3-item-content .subtitle a {
   transition: 600ms var(--cube-1);
 }
@@ -18348,14 +18353,14 @@ img.txa-team-bg-shape-2 {
   transition-delay: 0s;
 }
 .txa-dh-3-item-content .title {
-  font-size: 210px;
+  font-size: 353px;
   color: #fff;
   text-transform: uppercase;
   letter-spacing: -5%;
   text-align: center;
   margin-bottom: 0;
   line-height: 1;
-  font-weight: 700;
+  font-weight: 600;
   transition: 600ms var(--cube-1);
 }
 @media only screen and (min-width: 1400px) and (max-width: 1599px) {
@@ -18396,7 +18401,6 @@ img.txa-team-bg-shape-2 {
   display: inline-flex;
   align-items: self-start;
   padding-top: 33px;
-  max-width: 70px;
 }
 @media only screen and (min-width: 1200px) and (max-width: 1399px) {
   .txa-dh-3-item-content .title a .icon {
@@ -18482,6 +18486,19 @@ img.txa-team-bg-shape-2 {
   opacity: 1;
   visibility: visible;
   transition-delay: 2s;
+}
+.txa-dh-3-marquee {
+  position: absolute;
+  bottom: -7px;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+}
+.txa-dh-3-marquee-wrap {
+  display: flex;
+}
+.txa-dh-3-marquee-wrap .single-img {
+  flex: 0 0 auto;
 }
 
 /* 

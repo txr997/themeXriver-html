@@ -16,13 +16,15 @@
 .txa-dh-3 {
     &-area {
         overflow: hidden;
+        position: relative;
+        z-index: 1;
     }
     &-item {
         position: relative;
         z-index: 1;
         overflow: hidden;
         padding-top: 177px;
-        padding-bottom: 30px;
+        padding-bottom: 20px;
 
         .bg-img {
             position: absolute;
@@ -35,7 +37,7 @@
         &-wrap {
             display: flex;
             flex-direction: column;
-            gap: 66px;
+            gap: 43px;
             justify-content: space-between;
 
             .top-content {
@@ -108,7 +110,7 @@
                 text-transform: uppercase;
                 letter-spacing: -1%;
                 line-height: 1.153;
-                margin-bottom: -5px;
+                margin-bottom: -30px;
                 transition: 600ms var(--cube-1);
                 position: relative;
                 z-index: 1;
@@ -121,6 +123,10 @@
                 span {
                     text-transform: capitalize;
                     color: #FD3F00;
+
+                    &:is(.has-black) {
+                        color: #000;
+                    }
                 }
 
 
@@ -137,14 +143,14 @@
             }
 
             .title {
-                font-size: 210px;
+                font-size: 353px;
                 color: #fff;
                 text-transform: uppercase;
                 letter-spacing: -5%;
                 text-align: center;
                 margin-bottom: 0;
                 line-height: 1;
-                font-weight: 700;
+                font-weight: 600;
                 transition: 600ms var(--cube-1);
 
                 @media #{$xxl} {
@@ -179,7 +185,6 @@
                         display: inline-flex;
                         align-items: self-start;
                         padding-top: 33px;
-                        max-width: 70px;
 
                         @media #{$xl} {
                             max-width: 60px;
@@ -293,6 +298,22 @@
         }
     }
 
+
+    &-marquee {
+        position: absolute;
+        bottom: -7px;
+        left: 0;
+        width: 100%;
+        z-index: 1;
+
+        &-wrap {
+            display: flex;
+
+            .single-img {
+                flex: 0 0 auto;
+            }
+        }
+    }
 }
 
 

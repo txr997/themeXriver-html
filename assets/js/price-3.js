@@ -227,6 +227,21 @@ gsap.utils.toArray(".heart-shape .smoke").forEach((smoke, i) => {
     );
 });
 
+
+/* 
+    marquee-left
+*/
+$('.txa_dh_3_marquee').marquee({
+	speed: 20,
+	gap: 0,
+	delayBeforeStart: 0,
+	startVisible:true,
+	direction: 'left',
+	duplicated: true,
+	pauseOnHover: false,
+})
+
+
 document.addEventListener("DOMContentLoaded", function () {
     if (document.querySelector(".home_slider_2")) {
         var home_slider_2 = new Swiper(".home_slider_2", {
@@ -234,7 +249,7 @@ document.addEventListener("DOMContentLoaded", function () {
             speed: 1000,            
             effect: "fade",
             fadeEffect: { crossFade: true },
-            autoplay: { delay: 7000 },
+            // autoplay: { delay: 7000 },
             navigation: {
                 nextEl: ".home_slider_3_next",
                 prevEl: ".home_slider_3_prev",
