@@ -48,3 +48,15 @@
 @forward  './update-components/price-3';
 @forward  './update-components/design-hub-3';
 
+// themeXriver v2 (pages with <body class="txr-body">)
+@forward  './v2/txr-base';
+@forward  './v2/txr-header';
+@forward  './v2/txr-home';
+@forward  './v2/txr-shop';
+@forward  './v2/txr-services';
+@forward  './v2/txr-blog';
+@forward  './v2/txr-access';
+@forward  './v2/txr-us';
+@forward  './v2/txr-help';
+@forward  './v2/txr-footer';
+
