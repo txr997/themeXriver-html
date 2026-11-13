@@ -1,54 +1,7 @@
-
 @forward  './abstracts/variables';
 @forward  './abstracts/common';
-@forward  './components/button';
-@forward  './components/title';
-@forward  './components/header';
-@forward  './components/full-page-nav';
-@forward  './components/hero';
-@forward  './components/showcase';
-@forward  './components/categorie';
-@forward  './components/product';
-@forward  './components/about';
-@forward  './components/feature';
-@forward  './components/testimonial';
-@forward  './components/cta';
-@forward  './components/blog';
-@forward  './components/guarantee';
-@forward  './components/breadcrumb';
-@forward  './components/counter';
-@forward  './components/txa-life';
-@forward  './components/hire-us';
-@forward  './components/hire-details';
-@forward  './components/themes-page';
-@forward  './components/preloader';
-@forward  './components/comment';
-@forward  './components/art-collection';
-@forward  './components/art-details';
-@forward  './components/product-details';
-@forward  './components/blog-details';
-@forward  './components/cart-page';
-@forward  './components/checkout';
-@forward  './components/sidebar-widget';
-@forward  './components/team';
-@forward  './components/ticket';
-@forward  './components/doc';
-@forward  './components/affiliates';
-@forward  './components/support-policy';
-@forward  './components/contact-us';
-@forward  './components/faqs-page';
-@forward  './components/career';
-@forward  './components/career-details';
-@forward  './components/jobs-apply';
-@forward  './components/plg-landing';
-@forward  './components/footer';
-@forward  './components/back-to-top';
 
-@forward  './update-components/update-css-1';
-@forward  './update-components/price-3';
-@forward  './update-components/design-hub-3';
-
-// themeXriver v2 (pages with <body class="txr-body">)
+// themeXriver (pages with <body class="txr-body">)
 @forward  './v2/txr-base';
 @forward  './v2/txr-header';
 @forward  './v2/txr-home';
@@ -58,5 +11,5 @@
 @forward  './v2/txr-access';
 @forward  './v2/txr-us';
 @forward  './v2/txr-help';
+@forward  './v2/txr-account';
 @forward  './v2/txr-footer';
-

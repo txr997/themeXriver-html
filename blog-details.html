@@ -1,1219 +1,680 @@
-<!Doctype html>
-<html class="no-js" lang="zxx">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>themeXriver - Themes & templates</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
-        <!-- Place favicon.ico in the root directory -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>WordPress Demo Import Failed? 8 Safe Steps to Fix It | themeXriver Blog</title>
+	<meta name="description" content="Fix a failed WordPress demo import safely: server limits, required plugins, missing media, logs and partial imports, explained step by step.">
+	<meta property="og:title" content="WordPress Demo Import Failed? 8 Safe Steps to Fix It | themeXriver Blog">
+	<meta property="og:description" content="Fix a failed WordPress demo import safely: server limits, required plugins, missing media, logs and partial imports, explained step by step.">
+	<meta name="theme-color" content="#6400ed">
+	<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Inter:wght@400;500;600;700&display=swap">
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body class="txr-body">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+	<defs><linearGradient id="txr-grad-line" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#6400ed"/><stop offset="1" stop-color="#f000ff"/></linearGradient></defs>
+	<symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></symbol>
+	<symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+	<symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5M11 19l-7-7 7-7"/></symbol>
+	<symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+	<symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+	<symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+	<symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.5l2.94 5.96 6.56.95-4.75 4.63 1.12 6.54L12 17.5l-5.87 3.08 1.12-6.54L2.5 9.41l6.56-.95z"/></symbol>
+	<symbol id="i-cart" viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2.5 3h2.6l2.4 11.2a2 2 0 0 0 2 1.6h8.1a2 2 0 0 0 1.9-1.5L21 7H6"/></symbol>
+	<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7.5"/><path d="m20.5 20.5-4.2-4.2"/></symbol>
+	<symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+	<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+	<symbol id="i-refresh" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15.4-6.4L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15.4 6.4L3 16"/><path d="M8 16H3v5"/></symbol>
+	<symbol id="i-headset" viewBox="0 0 24 24"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/></symbol>
+	<symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+	<symbol id="i-gauge" viewBox="0 0 24 24"><path d="m12 14 4-4"/><path d="M3.3 19a10 10 0 1 1 17.4 0"/></symbol>
+	<symbol id="i-code" viewBox="0 0 24 24"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></symbol>
+	<symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 2 10 5-10 5L2 7z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></symbol>
+	<symbol id="i-palette" viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r="1.3"/><circle cx="17.5" cy="10.5" r="1.3"/><circle cx="8.5" cy="7.5" r="1.3"/><circle cx="6.5" cy="12.5" r="1.3"/><path d="M12 2a10 10 0 0 0 0 20c.9 0 1.6-.7 1.6-1.6 0-.4-.2-.8-.4-1.1-.3-.3-.4-.7-.4-1.1 0-.9.7-1.6 1.6-1.6H16a6 6 0 0 0 6-6c0-4.9-4.5-8.6-10-8.6z"/></symbol>
+	<symbol id="i-rocket" viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2.1-.1-2.9a2.2 2.2 0 0 0-2.9-.1z"/><path d="m12 15-3-3a22 22 0 0 1 2-4A12.9 12.9 0 0 1 22 2c0 2.7-.8 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.6-3 2-4c1.6-1.1 5 0 5 0M12 15v5s3-.6 4-2c1.1-1.6 0-5 0-5"/></symbol>
+	<symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></symbol>
+	<symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
+	<symbol id="i-lock" viewBox="0 0 24 24"><rect x="3.5" y="11" width="17" height="10.5" rx="2.5"/><path d="M7.5 11V7a4.5 4.5 0 0 1 9 0v4"/></symbol>
+	<symbol id="i-undo" viewBox="0 0 24 24"><path d="M3 7v6h6"/><path d="M21 17a9 9 0 0 0-15-6.7L3 13"/></symbol>
+	<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+	<symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+	<symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m22 7-10 6L2 7"/></symbol>
+	<symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></symbol>
+	<symbol id="i-close" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+	<symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z"/></symbol>
+	<symbol id="i-quote" viewBox="0 0 24 24"><path d="M3 21c3 0 7-1 7-8V5H3v8h4c0 4-2 5-4 5zM14 21c3 0 7-1 7-8V5h-7v8h4c0 4-2 5-4 5z"/></symbol>
+	<symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+	<symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/></symbol>
+	<symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4"/></symbol>
+	<symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2.5"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+	<symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+	<symbol id="i-tag" viewBox="0 0 24 24"><path d="M12 2H2v10l9.3 9.3a1 1 0 0 0 1.4 0l8.6-8.6a1 1 0 0 0 0-1.4z"/><circle cx="7" cy="7" r="1.4"/></symbol>
+	<symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.8 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></symbol>
+	<symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3l1.9 5.8L20 11l-6.1 2.2L12 19l-1.9-5.8L4 11l6.1-2.2zM19 2v4M21 4h-4"/></symbol>
+	<symbol id="i-crown" viewBox="0 0 24 24"><path d="m2 7 4.5 11h11L22 7l-5.5 4L12 4l-4.5 7z"/></symbol>
+	<symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9z"/></symbol>
+	<symbol id="i-migrate" viewBox="0 0 24 24"><path d="M8 3 4 7l4 4M4 7h16M16 21l4-4-4-4M20 17H4"/></symbol>
+	<symbol id="i-mobile" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M11 18h2"/></symbol>
+	<symbol id="i-layout" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2.5"/><path d="M3 9h18M9 21V9"/></symbol>
+	<symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></symbol>
+	<symbol id="i-gift" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></symbol>
+	<symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.5 12.9 17 22l-5-3-5 3 1.5-9.1"/></symbol>
+	<symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+	<symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></symbol>
+	<symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></symbol>
+	<symbol id="i-alert" viewBox="0 0 24 24"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></symbol>
+	<symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></symbol>
+	<symbol id="i-trending" viewBox="0 0 24 24"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></symbol>
+	<symbol id="i-bag" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></symbol>
+	<symbol id="i-server" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="8" rx="2"/><rect x="2" y="13" width="20" height="8" rx="2"/><path d="M6 7h.01M6 17h.01"/></symbol>
+	<symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+	<symbol id="i-pen" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></symbol>
+	<symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></symbol>
+	<symbol id="i-doc" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2H6.5A2.5 2.5 0 0 0 4 4.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></symbol>
+	<symbol id="i-wordpress" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="m5.5 8.5 3.6 9.5 2.9-7.6 2.9 7.6 3.6-9.5M4 8.5h4M13 8.5h3"/></symbol>
+	<symbol id="i-elementor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="M9 7.5v9M12.5 7.5H15M12.5 12H15M12.5 16.5H15"/></symbol>
+	<symbol id="i-woo" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="3.5"/><path d="m5.5 9.5 1.2 5 1.8-3.5 1.8 3.5 1.2-5"/><circle cx="16.5" cy="12" r="2"/></symbol>
+	<symbol id="i-html" viewBox="0 0 24 24"><path d="M4 3h16l-1.5 16L12 21l-6.5-2z"/><path d="M15.5 7.5h-7l.4 4h6.2l-.4 4-2.7.9-2.7-.9-.2-1.5"/></symbol>
+	<symbol id="i-figma" viewBox="0 0 24 24"><path d="M9 2h3v6.5H9A3.25 3.25 0 0 1 9 2zM12 2h3a3.25 3.25 0 0 1 0 6.5h-3zM12 8.5h3a3.25 3.25 0 1 1-3 3.25zM9 8.5h3V15H9a3.25 3.25 0 0 1 0-6.5zM9 15h3v3.25A3.25 3.25 0 1 1 9 15z"/></symbol>
+	<symbol id="i-x" viewBox="0 0 24 24"><path d="M4 4h4.5L20 20h-4.5zM20 4l-6.7 7.3M4 20l6.7-7.3"/></symbol>
+	<symbol id="i-facebook" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
+	<symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></symbol>
+	<symbol id="i-youtube" viewBox="0 0 24 24"><path d="M2.5 17a24 24 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24 24 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></symbol>
+	<symbol id="i-dribbble" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M19.1 5.1C15.2 9.1 10 10.4 2.3 10.9M21.8 12.8c-6.6-1.4-12.1 1-16.4 6.3M8.6 2.8c4.4 6 6 9.4 8 17.7"/></symbol>
+	<symbol id="i-instagram" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+</svg>
 
-		<!-- CSS here -->
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/css/swiper.min.css">
-        <link rel="stylesheet" href="assets/css/magnific-popup.css">
-        <link rel="stylesheet" href="assets/css/flaticon_txa.css">
-        <link rel="stylesheet" href="assets/css/main.css">
-    </head>
-     
-    <body >
+	<div class="txr-announce">
+		<div class="txr-announce__inner">
+			<span><svg class="txr-i" aria-hidden="true"><use href="#i-gift"></use></svg> <strong>Black Friday:</strong> 40% off every theme &amp; service with code <code>TXR40</code></span>
+			<a href="products.html" class="txr-announce__link">Shop the sale <svg class="txr-i" aria-hidden="true"><use href="#i-arrow-right"></use></svg></a>
+		</div>
+		<button class="txr-announce__close" type="button" aria-label="Close announcement"><svg class="txr-i" aria-hidden="true"><use href="#i-close"></use></svg></button>
+	</div>
 
-        <!-- header-start -->
-        <header class="txa-header-1-area" >
+	<header class="txr-header">
+		<div class="txr-container txr-header__inner">
+			<a href="index.html" class="txr-header__logo" aria-label="themeXriver home"><div class="txr-header__logo-img wa-img-cover wa-fix"><img src="assets/img/logo/themexriver-logo-1.svg" alt="themeXriver"></div></a>
 
-            <!-- header-top -->
-            <div class="txa-header-1-top">
-                <div class="container txa-container-1">
-                    <div class="txa-header-1-top-wrap d-flex align-items-center justify-content-md-between justify-content-center">
-                        
-                        <div class="txa-social-1 d-md-flex align-items-center flex-wrap d-none">
-                            <a href="https://www.facebook.com/themexriver/" target="_blank" aria-label="themexriver facebook" >
-                                <i class="flaticon-facebook-1"></i>
-                            </a>
-                            <a href="https://twitter.com/ThemeriverArt" target="_blank" aria-label="themexriver twitter" >
-                                <i class="flaticon-twitter twitter"></i>
-                            </a>
-                            <a href="https://www.instagram.com/themexriver/" target="_blank" aria-label="themexriver instagram" >
-                                <i class="flaticon-instagram"></i>
-                            </a>
-                            <a href="https://www.youtube.com/@themexriver" target="_blank" aria-label="themexriver youtube" >
-                                <i class="flaticon-youtube"></i>
-                            </a>
-                        </div>
-
-                        <a class="txa-logo-1" href="index.html" aria-label="themexriver" >
-                            <img src="assets/img/logo/themexriver-logo-1.svg" alt="themexriver">
-                        </a>
-
-                        <div class="txa-header-1-top-action-link d-md-flex align-items-center d-none">
-
-                            <!-- freebie-button -->
-                            <a class="txa-pr-btn-1 border-btn" href="freebie.html" aria-label="themexriver Freebie"><span class="txt">Freebie</span></a>
-
-                            <!-- login-register-button -->
-                            <div class="txa-login-reg-btn-1 has-border">
-                                <a href="login.html" aria-label="themexriver login" >login</a>
-                                <span>/</span>
-                                <a href="singup.html" aria-label="themexriver register" >register</a>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <!-- header-main -->
-            <div class="txa-header-1-bottom">
-                <div class="container txa-container-1">
-                    <div class="txa-header-1-bottom-wrap d-flex align-items-center justify-content-between" >
-                        
-                        <!-- categories -->
-                        <div class="txa-categories-1" id="categories-1">
-                            <div class="txa-bar-1">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                            <a  href="#" aria-label="name" class="title" >categories <i class="flaticon-down"></i></a>
-                            <nav class="main-navigation d-none d-sm-block">
-                                <ul id="c-main-nav" class="nav navbar-nav">
-    
-                                    <li class="dropdown">
-                                        <a aria-label="name" href="#">
-                                            <span data-hover="Blog">Blog</span>
-                                            <i class="flaticon-right-arrow"></i>
-                                        </a>
-    
-                                        <ul class="dropdown-menu">
-                                            <li>
-                                                <a aria-label="name" href="#">
-                                                    <span data-hover="categories 1">categories 1</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a aria-label="name" href="#">
-                                                    <span data-hover="categories 2">categories 2</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a aria-label="name" href="#">
-                                                    <span data-hover="categories 3">categories 3</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-        
-                                    <li class="dropdown">
-                                        <a aria-label="name" href="#">
-                                            <span data-hover="Business">Business</span>
-                                            <i class="flaticon-right-arrow"></i>
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            <li>
-                                                <a aria-label="name" href="#">
-                                                    <span data-hover="categories 1">categories 1</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a aria-label="name" href="#">
-                                                    <span data-hover="categories 2">categories 2</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a aria-label="name" href="#">
-                                                    <span data-hover="categories 3">categories 3</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-        
-                                    <li class="dropdown">
-                                        <a aria-label="name" href="#">
-                                            <span data-hover="Portfolio">Portfolio</span>
-                                            <i class="flaticon-right-arrow"></i>
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            <li>
-                                                <a aria-label="name" href="#">
-                                                    <span data-hover="categories 1">categories 1</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a aria-label="name" href="#">
-                                                    <span data-hover="categories 2">categories 2</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a aria-label="name" href="#">
-                                                    <span data-hover="categories 3">categories 3</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-        
-                                    <li class="dropdown">
-                                        <a aria-label="name" href="#">
-                                            <span data-hover="E-commerce">E-commerce</span>
-                                            <i class="flaticon-right-arrow"></i>
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            <li>
-                                                <a aria-label="name" href="#">
-                                                    <span data-hover="categories 1">categories 1</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a aria-label="name" href="#">
-                                                    <span data-hover="categories 2">categories 2</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a aria-label="name" href="#">
-                                                    <span data-hover="categories 3">categories 3</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-        
-                                    <li class="dropdown">
-                                        <a aria-label="name" href="#">
-                                            <span data-hover="Magazine">Magazine</span>
-                                            <i class="flaticon-right-arrow"></i>
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            <li>
-                                                <a aria-label="name" href="#">
-                                                    <span data-hover="categories 1">categories 1</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a aria-label="name" href="#">
-                                                    <span data-hover="categories 2">categories 2</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a aria-label="name" href="#">
-                                                    <span data-hover="categories 3">categories 3</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-        
-                                    <li class="dropdown">
-                                        <a aria-label="name" href="#">
-                                            <span data-hover="Photography">Photography</span>
-                                            <i class="flaticon-right-arrow"></i>
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            <li>
-                                                <a aria-label="name" href="#">
-                                                    <span data-hover="categories 1">categories 1</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a aria-label="name" href="#">
-                                                    <span data-hover="categories 2">categories 2</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a aria-label="name" href="#">
-                                                    <span data-hover="categories 3">categories 3</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-        
-                                    <li class="dropdown">
-                                        <a aria-label="name" href="#">
-                                            <span data-hover="Corporate">Corporate</span>
-                                            <i class="flaticon-right-arrow"></i>
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            <li>
-                                                <a aria-label="name" href="#">
-                                                    <span data-hover="categories 1">categories 1</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a aria-label="name" href="#">
-                                                    <span data-hover="categories 2">categories 2</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a aria-label="name" href="#">
-                                                    <span data-hover="categories 3">categories 3</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-
-
-                                </ul>
-                            </nav>
-                        </div>
-
-                        <!-- menu -->
-                        <nav class="main-navigation d-none d-lg-block">
-                            <ul id="main-nav" class="nav navbar-nav">
-
-                                <li class="dropdown">
-                                    <span class="has-offer" >popular</span>
-
-                                    <a aria-label="name" href="#">
-                                        <span data-hover="themes & templates">themes & templates</span>
-                                        <i class="flaticon-down"></i>
-                                    </a>
-
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a aria-label="name" href="themes-page.html">
-                                                <span data-hover="wordpress themes">wordpress themes</span>
-                                            </a>
-                                        </li>
-                                        <li >
-                                            <a aria-label="name" href="template-page.html">
-                                                <span data-hover="html templates">html templates</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a aria-label="name" href="template-page.html">
-                                                <span data-hover="PSD templates">PSD templates</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a aria-label="name" href="template-page.html">
-                                                <span data-hover="figma templates">figma templates</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-    
-                                <li>
-                                    <a aria-label="name" href="plugin-page.html">
-                                        <span data-hover="plugins">plugins</span>
-                                    </a>
-                                </li>
-                                
-                                <li>
-                                    <span class="has-offer" >new</span>
-                                    <a aria-label="name" href="art-collection.html" >
-                                        <span data-hover="art collection">art collection</span>
-                                    </a>
-                           
-                                </li>
-                                
-                                <li >
-                                    <a href="ticket.html">
-                                        <span data-hover="support">support</span>
-                                        <i class="flaticon-down"></i>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a aria-label="name" href="contact-us.html">
-                                                <span data-hover="contact us">contact us</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a aria-label="name" href="support-contact.html">
-                                                <span data-hover="support contact">support contact</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a aria-label="name" href="ticket.html">
-                                                <span data-hover="Ticket Support">Ticket Support</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-    
-                                <li>
-                                    <span class="has-offer" >hot</span>
-                                    <a aria-label="name" href="hire-us.html">
-                                        <span data-hover="hire us">hire us</span>
-                                    </a>
-                                </li>
-    
-                            </ul>
-                        </nav>
-    
-                        <!-- action-link -->
-                        <div class="txa-header-1-bottom-action-link d-flex align-items-center">
-                            
-                            <!-- reating -->
-                            <div class="txa-rating-1 d-none d-xl-flex">
-                                <i class="flaticon-star"></i>
-                                <i class="flaticon-star"></i>
-                                <i class="flaticon-star"></i>
-                                <i class="flaticon-star"></i>
-                                <i class="flaticon-star"></i>
-                                <h4 class="txa-heading-1 title"><i class="flaticon-star"></i> trustpilot</h4>
-                            </div>
-    
-                            <!-- cart-btn -->
-                            <a href="theme-cart.html" aria-label="name" class="txa-cart-btn-1">
-                                $0.00 
-                                <span class="icon" >
-                                    <i class="flaticon-grocery-store icon-1"></i>
-                                    <i class="flaticon-grocery-store icon-2"></i>
-                                </span>
-                            </a>
-
-                            <!-- mobile-menu -->
-                            <div class="txa-mobile-menu-1 d-lg-none " id="menuToggle">
-                                <div class="txa-bar-1">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                            </div>
-    
-                        </div>
-    
-                    </div>
-                </div>
-            </div>
-
-        </header>
-        <!-- header-end -->
-
-        <!-- mobile-menu-start -->
-        <div class="mobile-menu lenis lenis-smooth" >
-            <div class="mobile-menu-wrap">
-                <div class="mobile-menu-bg">
-                    <span class="span1" ></span>
-                    <span class="span2" ></span>
-                </div>
-
-                <div class="mobile-menu-logo-wrap">
-                    <a href="index.html" class="mobile-menu-logo d-block" aria-label="brand-logo"  >
-                        <img src="assets/img/logo/themexriver-logo-1.svg" alt="themexriver">
-                    </a>
-                    <div class="mobile-menu-close" id="menuToggle2">
-                        <i class="flaticon-cancel"></i>
-                    </div>
-                </div>
-    
-                <div class="mobile-menu-search-bar">
-                    <form action="#" class="txa-search-form-1 mb-50" >
-                        <input type="text" aria-label="name" placeholder="Etc.. responsive Wordpress">
-                        <button class="txa-pr-btn-1 form-btn" type="button" aria-label="name" >
-                            <span class="txt">
-                                <i class="flaticon-search icon-1"></i>
-                                search
-                            </span>
-                        </button>
-                    </form>
-                </div>
-    
-    
-                <div class="mobile-menu-content-wrap mb-50">
-                    <!-- action-link -->
-                    <div class="mobile-menu-action-link">
-
-                            <!-- cart-btn -->
-                            <a href="#" aria-label="name" class="txa-cart-btn-1">
-                                $0.00 
-                                <span class="icon">
-                                    <i class="flaticon-grocery-store icon-1"></i>
-                                    <i class="flaticon-grocery-store icon-2"></i>
-                                </span>
-                            </a>
-
-                            <!-- login-register-button -->
-                            <div class="txa-login-reg-btn-1">
-                                <a href="#" aria-label="themexriver login">login</a>
-                                <span>/</span>
-                                <a href="#" aria-label="themexriver register">register</a>
-                            </div>
-
-                            <!-- freebie-button -->
-                            <a class="txa-pr-btn-1 border-btn" href="#" aria-label="themexriver Freebie"><span class="txt">Freebie</span></a>
-                            <!-- reating -->
-                            <div class="txa-rating-1">
-                            <i class="flaticon-star"></i>
-                            <i class="flaticon-star"></i>
-                            <i class="flaticon-star"></i>
-                            <i class="flaticon-star"></i>
-                            <i class="flaticon-star"></i>
-                            <h4 class="txa-heading-1 title"><i class="flaticon-star"></i> trustpilot</h4>
-                        </div>
-
-                    </div>
-    
-                    <!-- mobile-menu-list -->
-                    <div class="mobile-menu-navigation">
-                        <nav class="mobile-main-navigation  clearfix ul-li">
-                            <ul id="m-main-nav" class="nav navbar-nav">
-
-                                <li class="dropdown">
-                                    <a aria-label="name" href="#">
-                                        <span data-hover="themes & templates">themes & templates</span>
-                                    </a>
-
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a aria-label="name" href="themes-page.html">
-                                                <span data-hover="wordpress themes">wordpress themes</span>
-                                            </a>
-                                        </li>
-                                        <li >
-                                            <a aria-label="name" href="template-page.html">
-                                                <span data-hover="html templates">html templates</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a aria-label="name" href="template-page.html">
-                                                <span data-hover="PSD templates">PSD templates</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a aria-label="name" href="template-page.html">
-                                                <span data-hover="figma templates">figma templates</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-    
-                                <li>
-                                    <a aria-label="name" href="plugin-page.html">
-                                        <span data-hover="plugins">plugins</span>
-                                    </a>
-                                </li>
-                                
-                                <li>
-                                    <a aria-label="name" href="art-collection.html" >
-                                        <span data-hover="art collection">art collection</span>
-                                    </a>
-                           
-                                </li>
-                                
-                                <li class="dropdown" >
-                                    <a href="ticket.html">
-                                        <span data-hover="support">support</span>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a aria-label="name" href="contact-us.html">
-                                                <span data-hover="contact us">contact us</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a aria-label="name" href="support-contact.html">
-                                                <span data-hover="support contact">support contact</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a aria-label="name" href="ticket.html">
-                                                <span data-hover="Ticket Support">Ticket Support</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-    
-                                <li>
-                                    <a aria-label="name" href="hire-us.html">
-                                        <span data-hover="hire us">hire us</span>
-                                    </a>
-                                </li>
-    
-                            </ul>
-                        </nav>
-                    </div>
-
-                </div>
-                
-                <div class="mobile-menu-socail-link">
-                    <div class="txa-social-1 align-items-center flex-wrap">
-                        <a href="https://www.facebook.com/themexriver/" target="_blank" aria-label="themexriver facebook">
-                            <i class="flaticon-facebook-1"></i>
-                        </a>
-                        <a href="https://twitter.com/ThemeriverArt" target="_blank" aria-label="themexriver twitter">
-                            <i class="flaticon-twitter twitter"></i>
-                        </a>
-                        <a href="https://www.instagram.com/themexriver/" target="_blank" aria-label="themexriver instagram">
-                            <i class="flaticon-instagram"></i>
-                        </a>
-                        <a href="https://www.youtube.com/@themexriver" target="_blank" aria-label="themexriver youtube">
-                            <i class="flaticon-youtube"></i>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <!-- mobile-menu-end -->
-
-        <!-- mobile-categories-start -->
-        <div class="mobile-categories lenis lenis-smooth" >
-            <div class="mobile-categories-wrap">
-                <div class="mobile-categories-bg">
-                    <span class="span1" ></span>
-                    <span class="span2" ></span>
-                </div>
-
-                <div class="mobile-categories-content mb-40">
-                    <h4 class="txa-heading-2 title">categories list</h4>
-                    <div class="mobile-categories-close" id="categories-close">
-                        <i class="flaticon-cancel"></i>
-                    </div>
-                </div>
-    
-                <div class="mobile-categories-navigation">
-                    <nav class="mobile-main-navigation  clearfix ul-li">
-                        <ul id="c-m-main-nav" class="nav navbar-nav">
-
-                            <li class="dropdown">
-                                <a aria-label="name" href="#">
-                                    <span data-hover="Blog">Blog</span>
-                                </a>
-
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a aria-label="name" href="#">
-                                            <span data-hover="categories 1">categories 1</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a aria-label="name" href="#">
-                                            <span data-hover="categories 2">categories 2</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a aria-label="name" href="#">
-                                            <span data-hover="categories 3">categories 3</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="dropdown">
-                                <a aria-label="name" href="#">
-                                    <span data-hover="Business">Business</span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a aria-label="name" href="#">
-                                            <span data-hover="categories 1">categories 1</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a aria-label="name" href="#">
-                                            <span data-hover="categories 2">categories 2</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a aria-label="name" href="#">
-                                            <span data-hover="categories 3">categories 3</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="dropdown">
-                                <a aria-label="name" href="#">
-                                    <span data-hover="Portfolio">Portfolio</span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a aria-label="name" href="#">
-                                            <span data-hover="categories 1">categories 1</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a aria-label="name" href="#">
-                                            <span data-hover="categories 2">categories 2</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a aria-label="name" href="#">
-                                            <span data-hover="categories 3">categories 3</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="dropdown">
-                                <a aria-label="name" href="#">
-                                    <span data-hover="E-commerce">E-commerce</span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a aria-label="name" href="#">
-                                            <span data-hover="categories 1">categories 1</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a aria-label="name" href="#">
-                                            <span data-hover="categories 2">categories 2</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a aria-label="name" href="#">
-                                            <span data-hover="categories 3">categories 3</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="dropdown">
-                                <a aria-label="name" href="#">
-                                    <span data-hover="Magazine">Magazine</span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a aria-label="name" href="#">
-                                            <span data-hover="categories 1">categories 1</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a aria-label="name" href="#">
-                                            <span data-hover="categories 2">categories 2</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a aria-label="name" href="#">
-                                            <span data-hover="categories 3">categories 3</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="dropdown">
-                                <a aria-label="name" href="#">
-                                    <span data-hover="Photography">Photography</span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a aria-label="name" href="#">
-                                            <span data-hover="categories 1">categories 1</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a aria-label="name" href="#">
-                                            <span data-hover="categories 2">categories 2</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a aria-label="name" href="#">
-                                            <span data-hover="categories 3">categories 3</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="dropdown">
-                                <a aria-label="name" href="#">
-                                    <span data-hover="Corporate">Corporate</span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a aria-label="name" href="#">
-                                            <span data-hover="categories 1">categories 1</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a aria-label="name" href="#">
-                                            <span data-hover="categories 2">categories 2</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a aria-label="name" href="#">
-                                            <span data-hover="categories 3">categories 3</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-
-
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
-        <!-- mobile-categories-end -->
-
-		<!-- breadcrumb-area-start -->
-		<div class="breadcrumb-area bg-default  pt-125 pb-145 fix" data-background="assets/img/breadcrumb/breadcrumb-img-1.jpg">
-			<div class="container txa-container-1 z-index-3">
-				<div class="row">
-					<div class="col-xxl-12">
-						<div class="breadcrumb-wrap text-center">
-							<h2 class="breadcrumb-title txa-heading-2" >Blog Details</h2>
-							<div class="breadcrumb-list" >
-								<a href="index.html">Home</a>
-								<a href="blog.html">blog</a>
-								<span>Blog Details</span>
+			<nav class="txr-nav" aria-label="Main">
+				<ul class="txr-nav__list">
+					<li class="txr-nav__item">
+						<a href="products.html" class="txr-nav__link">Themes <svg class="txr-i" aria-hidden="true"><use href="#i-chevron-down"></use></svg></a>
+						<div class="txr-mega">
+							<div class="txr-mega__grid">
+								<div>
+									<span class="txr-mega__label">Browse</span>
+									<div class="txr-mega__links">
+										<a href="products.html" class="txr-mega__link"><span class="txr-mega__ico"><svg class="txr-i" aria-hidden="true"><use href="#i-grid"></use></svg></span>All themes <em>120+</em></a>
+										<a href="products.html" class="txr-mega__link"><span class="txr-mega__ico"><svg class="txr-i" aria-hidden="true"><use href="#i-sparkle"></use></svg></span>New releases <em>New</em></a>
+										<a href="products.html" class="txr-mega__link"><span class="txr-mega__ico"><svg class="txr-i" aria-hidden="true"><use href="#i-crown"></use></svg></span>Best sellers</a>
+										<a href="products.html" class="txr-mega__link"><span class="txr-mega__ico"><svg class="txr-i" aria-hidden="true"><use href="#i-gift"></use></svg></span>Free themes</a>
+										<a href="access.html" class="txr-mega__link"><span class="txr-mega__ico"><svg class="txr-i" aria-hidden="true"><use href="#i-layers"></use></svg></span>All Access pass</a>
+									</div>
+								</div>
+								<div>
+									<span class="txr-mega__label">Popular categories</span>
+									<div class="txr-mega__links txr-mega__links--2col">
+										<a href="products.html?cat=business" class="txr-mega__link">Business</a><a href="products.html?cat=agency" class="txr-mega__link">Agency</a><a href="products.html?cat=construction" class="txr-mega__link">Construction</a><a href="products.html?cat=education" class="txr-mega__link">Education</a><a href="products.html?cat=travel" class="txr-mega__link">Travel</a><a href="products.html?cat=logistics" class="txr-mega__link">Logistics</a><a href="products.html?cat=it" class="txr-mega__link">IT &amp; SaaS</a><a href="products.html?cat=architecture" class="txr-mega__link">Architecture</a><a href="products.html?cat=saas" class="txr-mega__link">App Landing</a><a href="products.html?cat=agency" class="txr-mega__link">Portfolio</a>
+									</div>
+								</div>
+								<div>
+									<span class="txr-mega__label">Platforms</span>
+									<div class="txr-mega__links">
+										<a href="products.html" class="txr-mega__svc"><span class="txr-mega__ico"><svg class="txr-i" aria-hidden="true"><use href="#i-wordpress"></use></svg></span><span><strong>WordPress</strong><small>Elementor &amp; Gutenberg ready</small></span></a>
+										<a href="products.html" class="txr-mega__svc"><span class="txr-mega__ico"><svg class="txr-i" aria-hidden="true"><use href="#i-woo"></use></svg></span><span><strong>WooCommerce</strong><small>Stores that convert</small></span></a>
+										<a href="products.html" class="txr-mega__svc"><span class="txr-mega__ico"><svg class="txr-i" aria-hidden="true"><use href="#i-html"></use></svg></span><span><strong>HTML templates</strong><small>Clean, framework-free code</small></span></a>
+									</div>
+								</div>
+								<a href="theme-details.html" class="txr-mega__feat">
+									<span class="txr-mega__feat-top"><span class="txr-chip txr-chip--grad"><svg class="txr-i" aria-hidden="true"><use href="#i-crown"></use></svg>Theme of the week</span><span class="txr-mega__feat-rating"><svg class="txr-i is-fill" aria-hidden="true"><use href="#i-star"></use></svg>4.9</span></span>
+									<span class="txr-mega__feat-shot">
+										<span class="txr-mega__feat-bar"><i></i><i></i><i></i></span>
+										<div class="txr-mega__feat-img wa-fix"><div class="wa-img-contain wa-zoom"><img src="assets/img-3/products/Optitech%20-%20IT%20Solutions%20%26%20Services%20Preview%20Page.__large_preview.png" alt="Optitech IT solutions theme preview" loading="lazy"></div></div>
+									</span>
+									<span class="txr-mega__feat-body">
+										<strong>Optitech</strong>
+										<small>IT Solutions &amp; Services · 3.1k sales</small>
+									</span>
+									<span class="txr-mega__feat-foot">
+										<span class="txr-price"><strong>$35</strong><del>$59</del></span>
+										<span class="txr-mega__feat-cta">View <svg class="txr-i" aria-hidden="true"><use href="#i-arrow-up-right"></use></svg></span>
+									</span>
+								</a>
+							</div>
+							<div class="txr-mega__foot">
+								<span><svg class="txr-i" aria-hidden="true"><use href="#i-check"></use></svg>Lifetime free updates</span>
+								<span><svg class="txr-i" aria-hidden="true"><use href="#i-check"></use></svg>6 months expert support</span>
+								<span><svg class="txr-i" aria-hidden="true"><use href="#i-check"></use></svg>30-day money-back guarantee</span>
+								<a href="products.html" class="txr-link">View all themes <svg class="txr-i txr-i--up" aria-hidden="true"><use href="#i-arrow-up-right"></use></svg></a>
 							</div>
 						</div>
+					</li>
+					<li class="txr-nav__item">
+						<a href="services.html" class="txr-nav__link">Services <svg class="txr-i" aria-hidden="true"><use href="#i-chevron-down"></use></svg></a>
+						<div class="txr-mega">
+							<div class="txr-mega__grid txr-mega__grid--services">
+								<div><div class="txr-mega__links"><a href="services.html#svc-install" class="txr-mega__svc"><span class="txr-mega__ico"><svg class="txr-i" aria-hidden="true"><use href="#i-wrench"></use></svg></span><span><strong>Theme installation</strong><small>Demo setup on your hosting in 24h</small></span></a><a href="services.html#svc-customization" class="txr-mega__svc"><span class="txr-mega__ico"><svg class="txr-i" aria-hidden="true"><use href="#i-palette"></use></svg></span><span><strong>Theme customization</strong><small>Your brand, colors, pages &amp; content</small></span></a><a href="services.html#ui-design" class="txr-mega__svc"><span class="txr-mega__ico"><svg class="txr-i" aria-hidden="true"><use href="#i-pen"></use></svg></span><span><strong>UI/UX design</strong><small>Figma websites, apps &amp; design systems</small></span></a></div></div><div><div class="txr-mega__links"><a href="services.html#svc-website" class="txr-mega__svc"><span class="txr-mega__ico"><svg class="txr-i" aria-hidden="true"><use href="#i-rocket"></use></svg></span><span><strong>Complete website</strong><small>Strategy, design &amp; build, done for you</small></span></a><a href="services.html#svc-speed" class="txr-mega__svc"><span class="txr-mega__ico"><svg class="txr-i" aria-hidden="true"><use href="#i-gauge"></use></svg></span><span><strong>Speed optimization</strong><small>Core Web Vitals in the green</small></span></a></div></div><div><div class="txr-mega__links"><a href="services.html#svc-woo" class="txr-mega__svc"><span class="txr-mega__ico"><svg class="txr-i" aria-hidden="true"><use href="#i-bag"></use></svg></span><span><strong>WooCommerce setup</strong><small>Products, payments, shipping, taxes</small></span></a><a href="services.html#svc-care" class="txr-mega__svc"><span class="txr-mega__ico"><svg class="txr-i" aria-hidden="true"><use href="#i-shield"></use></svg></span><span><strong>Care &amp; maintenance</strong><small>Updates, backups &amp; security monthly</small></span></a></div></div>
+								<div class="txr-mega__promo txr-mega__promo--grad">
+									<span class="txr-chip" style="background:rgba(255,255,255,.2);color:#fff"><svg class="txr-i" aria-hidden="true"><use href="#i-chat"></use></svg>Free consultation</span>
+									<div>
+										<h5>Not sure what you need?</h5>
+										<p style="color:rgba(255,255,255,.85)">Book a free 20-minute call. We'll recommend the right plan, no strings attached.</p>
+										<a href="services.html#quote" class="txr-btn txr-btn--light txr-btn--sm" style="margin-top:16px">Book a call <svg class="txr-i txr-i--arrow" aria-hidden="true"><use href="#i-arrow-right"></use></svg></a>
+									</div>
+								</div>
+							</div>
+							<div class="txr-mega__foot">
+								<span><svg class="txr-i" aria-hidden="true"><use href="#i-check"></use></svg>2,800+ projects delivered</span>
+								<span><svg class="txr-i" aria-hidden="true"><use href="#i-check"></use></svg>Pay in milestones</span>
+								<span><svg class="txr-i" aria-hidden="true"><use href="#i-check"></use></svg>3-month post-launch warranty</span>
+								<a href="services.html" class="txr-link">All services <svg class="txr-i txr-i--up" aria-hidden="true"><use href="#i-arrow-up-right"></use></svg></a>
+							</div>
+						</div>
+					</li>
+					<li class="txr-nav__item"><a href="access.html" class="txr-nav__link">All Access <span class="txr-nav__badge">-90%</span></a></li>
+					<li class="txr-nav__item">
+						<a href="blog.html" class="txr-nav__link is-current">Resources <svg class="txr-i" aria-hidden="true"><use href="#i-chevron-down"></use></svg></a>
+						<div class="txr-mega txr-mega--sm">
+							<div class="txr-mega__links">
+								<a href="about.html" class="txr-mega__link"><span class="txr-mega__ico"><svg class="txr-i" aria-hidden="true"><use href="#i-award"></use></svg></span>About us</a>
+								<a href="blog.html" class="txr-mega__link"><span class="txr-mega__ico"><svg class="txr-i" aria-hidden="true"><use href="#i-pen"></use></svg></span>Blog &amp; tutorials</a>
+								<a href="faqs.html" class="txr-mega__link"><span class="txr-mega__ico"><svg class="txr-i" aria-hidden="true"><use href="#i-doc"></use></svg></span>Documentation</a>
+								<a href="changelog.html" class="txr-mega__link"><span class="txr-mega__ico"><svg class="txr-i" aria-hidden="true"><use href="#i-refresh"></use></svg></span>Changelog</a>
+								<a href="faqs.html" class="txr-mega__link"><span class="txr-mega__ico"><svg class="txr-i" aria-hidden="true"><use href="#i-info"></use></svg></span>Help center &amp; FAQ</a>
+								<a href="affiliates.html" class="txr-mega__link"><span class="txr-mega__ico"><svg class="txr-i" aria-hidden="true"><use href="#i-users"></use></svg></span>Affiliate program</a>
+							</div>
+						</div>
+					</li>
+					<li class="txr-nav__item"><a href="support.html" class="txr-nav__link">Support</a></li>
+				</ul>
+			</nav>
+
+			<div class="txr-header__actions">
+				<button class="txr-header__icon" type="button" aria-label="Search (Ctrl+K)" data-txr-search-open><svg class="txr-i" aria-hidden="true"><use href="#i-search"></use></svg></button>
+				<a href="login.html" class="txr-header__icon txr-header__account" aria-label="Account"><svg class="txr-i" aria-hidden="true"><use href="#i-user"></use></svg></a>
+				<a href="access.html" class="txr-btn txr-btn--primary txr-btn--sm txr-header__cta">Get All Access <svg class="txr-i txr-i--arrow" aria-hidden="true"><use href="#i-arrow-right"></use></svg></a>
+				<button class="txr-header__icon txr-header__burger" type="button" aria-label="Open menu" data-txr-mnav-open><svg class="txr-i" aria-hidden="true"><use href="#i-menu"></use></svg></button>
+			</div>
+		</div>
+	</header>
+
+	<div class="txr-mnav" aria-hidden="false">
+		<div class="txr-mnav__overlay" data-txr-mnav-close></div>
+		<div class="txr-mnav__panel" role="dialog" aria-label="Menu">
+			<div class="txr-mnav__top">
+				<a href="index.html" class="txr-header__logo"><div class="txr-header__logo-img wa-img-cover wa-fix"><img src="assets/img/logo/themexriver-logo-1.svg" alt="themeXriver" loading="lazy"></div></a>
+				<button class="txr-header__icon" type="button" aria-label="Close menu" data-txr-mnav-close><svg class="txr-i" aria-hidden="true"><use href="#i-close"></use></svg></button>
+			</div>
+			<ul class="txr-mnav__list">
+				<li><button class="txr-mnav__link" type="button" aria-expanded="false">Themes <svg class="txr-i" aria-hidden="true"><use href="#i-chevron-down"></use></svg></button>
+					<div class="txr-mnav__sub"><div><ul><li><a href="products.html">All themes</a></li><li><a href="products.html">New releases</a></li><li><a href="products.html">Best sellers</a></li><li><a href="products.html?cat=business">Business</a></li><li><a href="products.html?cat=agency">Agency</a></li><li><a href="products.html?cat=construction">Construction</a></li></ul></div></div></li>
+				<li><button class="txr-mnav__link" type="button" aria-expanded="false">Services <svg class="txr-i" aria-hidden="true"><use href="#i-chevron-down"></use></svg></button>
+					<div class="txr-mnav__sub"><div><ul><li><a href="services.html#svc-install">Theme installation</a></li><li><a href="services.html#svc-customization">Theme customization</a></li><li><a href="services.html#ui-design">UI/UX design</a></li><li><a href="services.html#svc-website">Complete website</a></li><li><a href="services.html#svc-speed">Speed optimization</a></li><li><a href="services.html#svc-care">Care &amp; maintenance</a></li></ul></div></div></li>
+				<li><a class="txr-mnav__link" href="access.html">All Access</a></li>
+				<li><a class="txr-mnav__link" href="about.html">About us</a></li>
+				<li><a class="txr-mnav__link" href="blog.html">Blog</a></li>
+				<li><a class="txr-mnav__link" href="changelog.html">Changelog</a></li>
+				<li><a class="txr-mnav__link" href="support.html">Support</a></li>
+			</ul>
+			<div class="txr-mnav__bottom">
+				<a href="access.html" class="txr-btn txr-btn--primary txr-btn--block">Get All Access <svg class="txr-i txr-i--arrow" aria-hidden="true"><use href="#i-arrow-right"></use></svg></a>
+				<a href="login.html" class="txr-btn txr-btn--ghost txr-btn--block"><svg class="txr-i" aria-hidden="true"><use href="#i-user"></use></svg>Sign in</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="txr-search" role="dialog" aria-label="Search">
+		<div class="txr-search__box">
+			<form class="txr-search__form" action="products.html" method="get">
+				<svg class="txr-i" aria-hidden="true"><use href="#i-search"></use></svg>
+				<input type="search" name="q" placeholder="Search themes, services or articles…" aria-label="Search">
+				<kbd>Esc</kbd>
+			</form>
+			<div class="txr-search__hint">Popular searches
+				<div><a href="products.html?q=construction">Construction</a><a href="products.html?q=agency">Agency</a><a href="products.html?q=education">Education</a><a href="products.html?q=travel">Travel</a><a href="services.html#svc-install">Theme installation</a></div>
+			</div>
+		</div>
+	</div>
+
+	<main>
+
+	<div class="txr-readbar" aria-hidden="true"></div>
+		<section class="txr-ahero">
+			<div class="txr-container">
+				<div class="txr-ahero__inner">
+					<nav class="txr-pdhead__crumb" aria-label="Breadcrumb"><a href="index.html">Home</a><svg class="txr-i" aria-hidden="true"><use href="#i-chevron-right"></use></svg><a href="blog.html">Blog</a><svg class="txr-i" aria-hidden="true"><use href="#i-chevron-right"></use></svg><span>Tutorials</span></nav>
+					<span class="txr-chip txr-chip--pr">Tutorials</span>
+					<h1>WordPress Demo Import Failed? 8 Safe Steps to Fix It</h1>
+					<p class="txr-ahero__excerpt">A stuck progress bar, missing images or an error before any pages appear are three different problems. Here's how to find which one you have, and fix it without losing content.</p>
+					<div class="txr-ahero__meta">
+						<div class="txr-byline"><div class="txr-byline__avatar wa-img-cover wa-fix"><img src="assets/img-2/testimonial/t1-author-5.jpg" alt="Daniel Ortiz" loading="lazy"></div><div><strong>Daniel Ortiz</strong>Senior support engineer</div></div>
+						<span><svg class="txr-i" aria-hidden="true"><use href="#i-calendar"></use></svg>Nov 06, 2026</span>
+						<span><svg class="txr-i" aria-hidden="true"><use href="#i-clock"></use></svg>10 min read</span>
+						<span><svg class="txr-i" aria-hidden="true"><use href="#i-refresh"></use></svg>Updated for WordPress 6.7</span>
 					</div>
 				</div>
 			</div>
+		</section>
 
-            <div class="breadcrumb-earth-position">
-                <img class="earth-circle" src="assets/img/breadcrumb/earth-circle.png" alt="">
-                <img class="earth" src="assets/img/breadcrumb/earth.png" alt="">
-            </div>
+		<section class="txr-section" style="padding-top:70px">
+			<div class="txr-container">
+				<div class="txr-article">
+					<div>
+						<div class="txr-ahero__img wa-img-auto wa-fix"><img src="assets/img/blog/blog-details-img-1.png" alt="WordPress demo import troubleshooting"></div>
+						<article class="txr-prose">
+							<p><strong>WordPress demo import failed?</strong> Stop before you press “Import” again. Repeating a broken import often creates duplicate pages, menus and media that are painful to clean up later. The most useful next step depends on <em>what</em> actually went wrong.</p>
+							<p>This guide walks you through eight checks our support team uses every day. They work for theme demo importers, the WordPress XML importer and Elementor kit imports.</p>
 
+							<div class="txr-takeaways">
+								<h4><svg class="txr-i" aria-hidden="true"><use href="#i-bulb"></use></svg>Key takeaways</h4>
+								<ul class="txr-check-list">
+									<li><svg class="txr-i" aria-hidden="true"><use href="#i-check"></use></svg>Most failed imports are caused by low PHP limits on shared hosting.</li>
+									<li><svg class="txr-i" aria-hidden="true"><use href="#i-check"></use></svg>Always install the theme's required plugins <em>before</em> importing.</li>
+									<li><svg class="txr-i" aria-hidden="true"><use href="#i-check"></use></svg>Back up first, and never re-run a full import on a live site.</li>
+								</ul>
+							</div>
+
+							<h2 id="first-check">Before you start: the right first check</h2>
+							<p>Write down the exact error message, the importer you used, the demo you selected and the time of the attempt. Then look at <strong>Pages</strong>, <strong>Media</strong> and <strong>Menus</strong> to see what already exists. A failed request doesn't necessarily mean nothing was imported.</p>
+							<div class="txr-callout txr-callout--warn"><svg class="txr-i" aria-hidden="true"><use href="#i-alert"></use></svg><div><strong>Working on a live business site?</strong>Use a staging copy whenever possible, and take a full backup of files and database before changing plugins or server settings.</div></div>
+
+							<h2 id="step-1">1. Identify the importer and the correct package</h2>
+							<p>Themes ship more than one file. Uploading the full download ZIP instead of the installable theme ZIP is the single most common mistake we see.</p>
+							<ul>
+								<li>Upload <code>builta.zip</code> (the theme), not <code>builta-package.zip</code> (the full download).</li>
+								<li>Check that the demo you chose matches your theme version.</li>
+								<li>Use the importer recommended in the theme documentation.</li>
+							</ul>
+
+							<h2 id="step-2">2. Install the required plugins first</h2>
+							<p>Demo content references widgets from Elementor, Contact Form 7 and the theme's core plugin. If those plugins are missing, pages import empty or the importer stops halfway.</p>
+							<ol>
+								<li>Go to <strong>Appearance → Install Plugins</strong>.</li>
+								<li>Install and activate every plugin marked <em>Required</em>.</li>
+								<li>Refresh the importer page, then run the import once.</li>
+							</ol>
+
+							<h2 id="step-3">3. Check your server limits</h2>
+							<p>Shared hosting often ships with limits that are too low for a full demo. Check them under <strong>Tools → Site Health → Info → Server</strong>.</p>
+							<div class="txr-prose__table">
+								<table>
+									<thead><tr><th>Setting</th><th>Minimum</th><th>Recommended</th></tr></thead>
+									<tbody>
+										<tr><td>memory_limit</td><td>256M</td><td>512M</td></tr>
+										<tr><td>max_execution_time</td><td>120</td><td>300</td></tr>
+										<tr><td>upload_max_filesize</td><td>32M</td><td>64M</td></tr>
+										<tr><td>PHP version</td><td>7.4</td><td>8.2+</td></tr>
+									</tbody>
+								</table>
+							</div>
+							<p>If you can't change these yourself, add the lines below to <code>wp-config.php</code> or ask your host:</p>
+<pre><code><span class="c">// wp-config.php, above "That's all, stop editing!"</span>
+<span class="k">define</span>( <span class="s">'WP_MEMORY_LIMIT'</span>, <span class="s">'512M'</span> );
+<span class="k">set_time_limit</span>( 300 );</code></pre>
+
+							<h2 id="step-4">4. Fix missing images and media</h2>
+							<p>If pages appear but images are grey boxes, the importer couldn't download media from the demo server. This is usually caused by a firewall or by <code>allow_url_fopen</code> being disabled.</p>
+							<figure>
+								<div class="txr-prose__img wa-img-auto wa-fix"><img src="assets/img/blog/blog-details-img-2.png" alt="Media library showing imported demo images" loading="lazy"></div>
+								<figcaption>Re-run only the “Media” step once the server can reach the demo URL.</figcaption>
+							</figure>
+
+							<div class="txr-inline-cta">
+								<div class="txr-inline-cta__img wa-img-cover wa-fix wa-img-top"><img src="assets/img-2/themes/themes-ss-9.jpg" alt="Builta theme" loading="lazy"></div>
+								<div>
+									<h4>Rather have us do it?</h4>
+									<p>Our team installs the theme and imports the demo on your hosting in 24 hours, guaranteed to match the preview.</p>
+									<a href="services.html" class="txr-btn txr-btn--primary txr-btn--sm">Installation from $49 <svg class="txr-i txr-i--arrow" aria-hidden="true"><use href="#i-arrow-right"></use></svg></a>
+								</div>
+							</div>
+
+							<h2 id="step-5">5. Read the error logs</h2>
+							<p>Enable debugging to see the real cause instead of a generic “Import failed” message. Add <code>define( 'WP_DEBUG_LOG', true );</code> and check <code>wp-content/debug.log</code> right after the next attempt.</p>
+							<blockquote>“Nine out of ten import tickets we receive are solved by raising the memory limit and activating the required plugins.”<cite>Daniel Ortiz, Senior Support Engineer</cite></blockquote>
+
+							<h2 id="step-6">6. Recover from a partial import</h2>
+							<p>If some content imported, don't run the full import again. Remove the duplicates first, or reset the site with a plugin like WP Reset on a fresh install only, then import once with the fixes above in place.</p>
+
+							<h2 id="step-7">7. Try a manual or selective import</h2>
+							<p>Most importers let you import content, widgets and customizer settings separately. Importing step by step uses less memory and makes it obvious which part is failing.</p>
+							<table>
+								<caption>Which import method to use, depending on what went wrong.</caption>
+								<thead><tr><th>Method</th><th>Best for</th><th class="is-hl">Memory use</th><th>Time</th></tr></thead>
+								<tbody>
+									<tr><th>Full one-click import</th><td>Fresh installs on good hosting</td><td class="is-hl">High</td><td>2–5 min</td></tr>
+									<tr><th>Selective import</th><td>Shared hosting, timeouts</td><td class="is-hl">Medium</td><td>5–10 min</td></tr>
+									<tr><th>Manual XML + widgets</th><td>Repeated failures, strict servers</td><td class="is-hl">Low</td><td>15–20 min</td></tr>
+									<tr><th>Elementor kit only</th><td>Adding single pages or templates</td><td class="is-hl">Low</td><td>1–2 min</td></tr>
+								</tbody>
+							</table>
+
+							<h2 id="step-8">8. Verify the site after import</h2>
+							<ul>
+								<li>Set the homepage under <strong>Settings → Reading</strong>.</li>
+								<li>Assign the main menu under <strong>Appearance → Menus</strong>.</li>
+								<li>Regenerate Elementor CSS under <strong>Elementor → Tools</strong>.</li>
+								<li>Save permalinks once to refresh rewrite rules.</li>
+							</ul>
+							<div class="txr-callout txr-callout--ok"><svg class="txr-i" aria-hidden="true"><use href="#i-check"></use></svg><div><strong>Done!</strong>Your site should now match the demo. If anything still looks off, our support team can take a look. Just open a ticket with your error message.</div></div>
+
+							<h2 id="top-themes">Top 3 themes with a reliable demo import</h2>
+							<p>If you are still choosing a theme, start with one that is tested on shared hosting. These three import cleanly the first time and ship with every plugin the demo needs.</p>
+							<div class="txr-ptheme">
+								<div class="txr-ptheme__item">
+									<span class="txr-ptheme__rank">01</span>
+									<a href="theme-details.html" class="txr-ptheme__img wa-img-contain wa-fix"><img src="assets/img-3/products/Optitech%20-%20IT%20Solutions%20%26%20Services%20Preview%20Page.__large_preview.png" alt="Optitech - IT Solutions WordPress Theme" loading="lazy"></a>
+									<div class="txr-ptheme__body">
+										<div class="txr-ptheme__top"><span class="txr-ptheme__tag">IT Solutions</span><span class="txr-ptheme__rating"><svg class="txr-i is-fill" aria-hidden="true"><use href="#i-star"></use></svg>4.9 <em>(264)</em></span></div>
+										<h3><a href="theme-details.html">Optitech</a></h3>
+										<p>6 homepages, Elementor and a one-click import that finishes in under 3 minutes.</p>
+										<div class="txr-ptheme__foot">
+											<div class="txr-price"><strong>$35</strong><del>$59</del></div>
+											<div class="txr-ptheme__btns"><a href="#" class="txr-btn txr-btn--ghost txr-btn--sm"><svg class="txr-i" aria-hidden="true"><use href="#i-eye"></use></svg>Preview</a><a href="theme-details.html" class="txr-btn txr-btn--primary txr-btn--sm">View theme <svg class="txr-i txr-i--arrow" aria-hidden="true"><use href="#i-arrow-right"></use></svg></a></div>
+										</div>
+									</div>
+								</div>
+								<div class="txr-ptheme__item">
+									<span class="txr-ptheme__rank">02</span>
+									<a href="theme-details.html" class="txr-ptheme__img wa-img-contain wa-fix"><img src="assets/img-3/products/MetoBuild%20-%20Construction%20%26%20Industrial%20Preview%20Page.__large_preview.png" alt="MetoBuild - Construction WordPress Theme" loading="lazy"></a>
+									<div class="txr-ptheme__body">
+										<div class="txr-ptheme__top"><span class="txr-ptheme__tag">Construction</span><span class="txr-ptheme__rating"><svg class="txr-i is-fill" aria-hidden="true"><use href="#i-star"></use></svg>4.9 <em>(230)</em></span></div>
+										<h3><a href="theme-details.html">MetoBuild</a></h3>
+										<p>Built for contractors, with project galleries and quote forms ready after import.</p>
+										<div class="txr-ptheme__foot">
+											<div class="txr-price"><strong>$35</strong><del>$69</del></div>
+											<div class="txr-ptheme__btns"><a href="#" class="txr-btn txr-btn--ghost txr-btn--sm"><svg class="txr-i" aria-hidden="true"><use href="#i-eye"></use></svg>Preview</a><a href="theme-details.html" class="txr-btn txr-btn--primary txr-btn--sm">View theme <svg class="txr-i txr-i--arrow" aria-hidden="true"><use href="#i-arrow-right"></use></svg></a></div>
+										</div>
+									</div>
+								</div>
+								<div class="txr-ptheme__item">
+									<span class="txr-ptheme__rank">03</span>
+									<a href="theme-details.html" class="txr-ptheme__img wa-img-contain wa-fix"><img src="assets/img-3/products/Travlia.%20-%20Travel%20%26%20Tour%20Booking%20Preview%20Page.__large_preview.png" alt="Travlia - Travel Booking WordPress Theme" loading="lazy"></a>
+									<div class="txr-ptheme__body">
+										<div class="txr-ptheme__top"><span class="txr-ptheme__tag">Travel &amp; Tour</span><span class="txr-ptheme__rating"><svg class="txr-i is-fill" aria-hidden="true"><use href="#i-star"></use></svg>5.0 <em>(211)</em></span></div>
+										<h3><a href="theme-details.html">Travlia</a></h3>
+										<p>Tour booking, maps and WooCommerce payments, all configured by the demo.</p>
+										<div class="txr-ptheme__foot">
+											<div class="txr-price"><strong>$39</strong><del>$69</del></div>
+											<div class="txr-ptheme__btns"><a href="#" class="txr-btn txr-btn--ghost txr-btn--sm"><svg class="txr-i" aria-hidden="true"><use href="#i-eye"></use></svg>Preview</a><a href="theme-details.html" class="txr-btn txr-btn--primary txr-btn--sm">View theme <svg class="txr-i txr-i--arrow" aria-hidden="true"><use href="#i-arrow-right"></use></svg></a></div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<p class="txr-ptheme__all"><a href="products.html" class="txr-btn txr-btn--dark">Browse all 120+ themes <svg class="txr-i txr-i--arrow" aria-hidden="true"><use href="#i-arrow-right"></use></svg></a></p>
+
+							<!-- theme roundup: same markup the WordPress block editor outputs (Heading, Paragraph, Image, List, Buttons) -->
+							<h2 class="wp-block-heading" id="roundup">More business themes worth a look</h2>
+							<p>Need something for a consulting or agency site? These themes are built on the same import system, so every tip in this guide applies to them too.</p>
+
+							<h3 class="wp-block-heading">1. Optivanox – Business Consulting WordPress Theme</h3>
+							<p>Optivanox is a good fit if you want a polished consulting website without much technical work. It is built on Elementor, so you can change layouts, colors and content visually instead of editing theme files.</p>
+							<figure class="wp-block-image size-large"><img src="assets/img-3/products/Optivanox%20-%20Business%20Consulting%20Preview%20Page.__large_preview.png" alt="Optivanox – Business Consulting WordPress Theme" loading="lazy"><figcaption class="wp-element-caption">Optivanox – Business Consulting WordPress Theme</figcaption></figure>
+							<p>The one-click demo import sets up every page, menu and widget, and the theme options panel gives you control over each page's header, footer and layout.</p>
+							<h4 class="wp-block-heading">Key features</h4>
+							<ul class="wp-block-list">
+								<li>Elementor drag-and-drop page builder</li>
+								<li>One-click demo installation</li>
+								<li>Advanced page and post options</li>
+								<li>Unlimited color and typography control</li>
+								<li>Mailchimp integration</li>
+							</ul>
+							<h4 class="wp-block-heading">Who should choose Optivanox?</h4>
+							<p>Consultants, corporate service providers and agencies that want a consistent brand across many pages, with every section editable in Elementor.</p>
+							<div class="wp-block-buttons"><div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="theme-details.html">Explore Optivanox theme</a></div></div>
+
+							<h3 class="wp-block-heading">2. Nextnox – Digital &amp; Creative Agency WordPress Theme</h3>
+							<p>An agency website has to show work, explain services and turn visitors into leads. Nextnox gives you bold, ready-made layouts for exactly that, so you are not designing each page from scratch.</p>
+							<figure class="wp-block-image size-large"><img src="assets/img-3/products/Nextnox%20-%20Digital%20%26%20Creative%20Agency%20Preview%2001.__large_preview.png" alt="Nextnox – Digital &amp; Creative Agency WordPress Theme" loading="lazy"><figcaption class="wp-element-caption">Nextnox – Digital &amp; Creative Agency WordPress Theme</figcaption></figure>
+							<p>It includes multiple homepage designs and inner pages for services, portfolio and team, all editable with Elementor.</p>
+							<h4 class="wp-block-heading">Key features</h4>
+							<ul class="wp-block-list">
+								<li>Multiple pre-designed homepages</li>
+								<li>25+ inner pages</li>
+								<li>Portfolio and case-study layouts</li>
+								<li>Responsive, SEO-friendly code</li>
+							</ul>
+							<h4 class="wp-block-heading">Who should choose Nextnox?</h4>
+							<p>Creative and digital agencies that want a striking portfolio site with plenty of ready layouts to start from.</p>
+							<div class="wp-block-buttons"><div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="theme-details.html">Explore Nextnox theme</a></div></div>
+
+							<h3 class="wp-block-heading">3. Saasking – SaaS &amp; Tech Startup WordPress Theme</h3>
+							<p>Not every business site looks the same. Saasking is made for software and startup brands that need pricing tables, feature grids and app showcases out of the box.</p>
+							<figure class="wp-block-image size-large"><img src="assets/img-3/products/Saasking%20-%20Saas%20%26%20Tech%20Startup%20Preview%20Page.__large_preview.png" alt="Saasking – SaaS &amp; Tech Startup WordPress Theme" loading="lazy"><figcaption class="wp-element-caption">Saasking – SaaS &amp; Tech Startup WordPress Theme</figcaption></figure>
+							<p>It also supports a header and footer builder, so you can keep your design consistent across every page.</p>
+							<h4 class="wp-block-heading">Key features</h4>
+							<ul class="wp-block-list">
+								<li>Header and footer builder</li>
+								<li>Pricing, feature and integration sections</li>
+								<li>One-page navigation</li>
+								<li>WooCommerce support</li>
+							</ul>
+							<h4 class="wp-block-heading">Who should choose Saasking?</h4>
+							<p>SaaS products and tech startups that want a modern landing site and room to grow into a full marketing website.</p>
+							<div class="wp-block-buttons"><div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="theme-details.html">Explore Saasking theme</a></div></div>
+
+							<h2 id="faq">Frequently asked questions</h2>
+							<h3>Will importing a demo delete my existing content?</h3>
+							<p>No. Importers add content; they don't delete it. But they can create duplicates, which is why a backup is important.</p>
+							<h3>How long should a demo import take?</h3>
+							<p>Between two and ten minutes depending on your hosting. If it runs longer than 15 minutes, it has most likely timed out.</p>
+						</article>
+
+						<div class="txr-afoot">
+							<div class="txr-afoot__tags"><span class="txr-chip">Demo import</span><span class="txr-chip">Troubleshooting</span><span class="txr-chip">Hosting</span></div>
+							<div class="txr-afoot__share">Share:<a class="txr-share-btn" href="#" aria-label="Share on X"><svg class="txr-i" aria-hidden="true"><use href="#i-x"></use></svg></a><a class="txr-share-btn" href="#" aria-label="Share on LinkedIn"><svg class="txr-i" aria-hidden="true"><use href="#i-linkedin"></use></svg></a><button class="txr-share-btn" type="button" aria-label="Copy link" data-txr-copy><svg class="txr-i" aria-hidden="true"><use href="#i-link"></use></svg></button></div>
+						</div>
+
+						<div class="txr-authorbox">
+							<div class="txr-authorbox__img wa-img-cover wa-fix"><img src="assets/img-2/testimonial/t1-author-5.jpg" alt="Daniel Ortiz" loading="lazy"></div>
+							<div>
+								<small>Written by</small>
+								<h4>Daniel Ortiz</h4>
+								<p>Daniel has solved over 6,000 support tickets at themeXriver and writes about WordPress setup, hosting and troubleshooting.</p>
+							</div>
+						</div>
+
+						<nav class="txr-postnav" aria-label="More articles">
+							<a href="blog-details.html"><small><svg class="txr-i" aria-hidden="true"><use href="#i-arrow-left"></use></svg> Previous</small><strong>How to Choose the Perfect WordPress Theme for Your Business in 2026</strong></a>
+							<a href="blog-details.html"><small>Next <svg class="txr-i" aria-hidden="true"><use href="#i-arrow-right"></use></svg></small><strong>Elementor Free vs Pro: What You Actually Need for a Business Site</strong></a>
+						</nav>
+
+						<div class="txr-comments">
+							<h3>3 comments</h3>
+							<ul class="txr-comments__list">
+								<li><div class="txr-comments__avatar wa-img-cover wa-fix"><img src="assets/img-2/testimonial/t1-author-4.jpg" alt="Aisha Rahman" loading="lazy"></div><div class="txr-comments__bubble"><div class="txr-comments__top"><strong>Aisha Rahman</strong><span>2 days ago</span><button type="button">Reply</button></div><p>Step 3 fixed it for me. My host had memory at 128M. Bumped it to 512M and the import finished in two minutes. Thank you!</p></div></li>
+								<li class="is-reply"><div class="txr-comments__avatar wa-img-cover wa-fix"><img src="assets/img-2/testimonial/t1-author-5.jpg" alt="Daniel Ortiz" loading="lazy"></div><div class="txr-comments__bubble"><div class="txr-comments__top"><strong>Daniel Ortiz</strong><span class="txr-chip txr-chip--grad">Author</span><span>2 days ago</span></div><p>Great to hear, Aisha! That's the most common culprit by far.</p></div></li>
+								<li><div class="txr-comments__avatar wa-img-cover wa-fix"><img src="assets/img-2/testimonial/t1-author-6.jpg" alt="Lucas Moreau" loading="lazy"></div><div class="txr-comments__bubble"><div class="txr-comments__top"><strong>Lucas Moreau</strong><span>5 days ago</span><button type="button">Reply</button></div><p>The selective import tip is gold for client sites where I only need the header and footer settings.</p></div></li>
+							</ul>
+							<form class="txr-comments__form" onsubmit="return false">
+								<h4>Leave a comment</h4>
+								<div class="txr-field"><label for="c-name">Name</label><input id="c-name" type="text" autocomplete="name" required></div>
+								<div class="txr-field"><label for="c-email">Email (not published)</label><input id="c-email" type="email" autocomplete="email" required></div>
+								<div class="txr-field txr-field--full"><label for="c-msg">Comment</label><textarea id="c-msg" required></textarea></div>
+								<button class="txr-btn txr-btn--primary" type="submit">Post comment <svg class="txr-i txr-i--arrow" aria-hidden="true"><use href="#i-arrow-right"></use></svg></button>
+							</form>
+						</div>
+					</div>
+
+					<aside class="txr-bside">
+						<div class="txr-bside__box"><div class="txr-bside__search"><svg class="txr-i" aria-hidden="true"><use href="#i-search"></use></svg><input type="search" placeholder="Search articles…" aria-label="Search articles"></div></div>
+						<div class="txr-bside__box">
+							<h5>Most read</h5>
+							<div class="txr-bside__posts"><a href="blog-details.html"><div class="txr-bside__thumb wa-img-cover wa-fix"><img src="assets/img/blog/blog-img-2.png" alt="" loading="lazy"></div><span><strong>WordPress Demo Import Failed? 8 Safe Steps to Fix It</strong><small>Nov 06, 2026 · 10 min</small></span></a><a href="blog-details.html"><div class="txr-bside__thumb wa-img-cover wa-fix"><img src="assets/img/blog/blog-img-3.png" alt="" loading="lazy"></div><span><strong>Elementor Free vs Pro: What You Actually Need for a Business Site</strong><small>Nov 03, 2026 · 7 min</small></span></a><a href="blog-details.html"><div class="txr-bside__thumb wa-img-cover wa-fix"><img src="assets/img/blog/blog-img-4.png" alt="" loading="lazy"></div><span><strong>12 Ways to Make Your WordPress Site Load in Under 2 Seconds</strong><small>Oct 29, 2026 · 9 min</small></span></a><a href="blog-details.html"><div class="txr-bside__thumb wa-img-cover wa-fix"><img src="assets/img/blog/blog-img-5.png" alt="" loading="lazy"></div><span><strong>Theme Customization vs Custom Development: Which Is Right for You?</strong><small>Oct 24, 2026 · 6 min</small></span></a></div>
+						</div>
+						<!-- best sellers -->
+						<div class="txr-side-card txr-sbest txr-sslider" data-txr-sslider data-autoplay="4500">
+							<div class="txr-sslider__head">
+								<h5><svg class="txr-i is-fill" aria-hidden="true"><use href="#i-crown"></use></svg>Best selling themes</h5>
+								<div class="txr-sslider__nav"><button type="button" data-prev aria-label="Previous theme"><svg class="txr-i" aria-hidden="true"><use href="#i-arrow-left"></use></svg></button><button type="button" data-next aria-label="Next theme"><svg class="txr-i" aria-hidden="true"><use href="#i-arrow-right"></use></svg></button></div>
+							</div>
+							<div class="txr-sslider__track">
+								<a href="theme-details.html" class="txr-sslider__slide txr-sbest__item is-active">
+									<div class="txr-sbest__img wa-img-contain wa-fix"><img src="assets/img-3/products/Optitech%20-%20IT%20Solutions%20%26%20Services%20Preview%20Page.__large_preview.png" alt="Optitech theme" loading="lazy"></div>
+									<div class="txr-sbest__row"><span><strong>Optitech</strong>IT Solutions</span><em>3.1k sales</em></div>
+								</a>
+								<a href="theme-details.html" class="txr-sslider__slide txr-sbest__item">
+									<div class="txr-sbest__img wa-img-contain wa-fix"><img src="assets/img-3/products/Travlia.%20-%20Travel%20%26%20Tour%20Booking%20Preview%20Page.__large_preview.png" alt="Travlia theme" loading="lazy"></div>
+									<div class="txr-sbest__row"><span><strong>Travlia</strong>Travel &amp; Tour</span><em>2.6k sales</em></div>
+								</a>
+								<a href="theme-details.html" class="txr-sslider__slide txr-sbest__item">
+									<div class="txr-sbest__img wa-img-contain wa-fix"><img src="assets/img-3/products/Optivanox%20-%20Business%20Consulting%20Preview%20Page.__large_preview.png" alt="Optivanox theme" loading="lazy"></div>
+									<div class="txr-sbest__row"><span><strong>Optivanox</strong>Consulting</span><em>2.3k sales</em></div>
+								</a>
+								<a href="theme-details.html" class="txr-sslider__slide txr-sbest__item">
+									<div class="txr-sbest__img wa-img-contain wa-fix"><img src="assets/img-3/products/Saasking%20-%20Saas%20%26%20Tech%20Startup%20Preview%20Page.__large_preview.png" alt="Saasking theme" loading="lazy"></div>
+									<div class="txr-sbest__row"><span><strong>Saasking</strong>SaaS &amp; Startup</span><em>2.1k sales</em></div>
+								</a>
+							</div>
+							<div class="txr-sslider__dots" data-dots></div>
+						</div>
+
+						<!-- services -->
+						<div class="txr-side-card txr-ssvc">
+							<div class="txr-ssvc__head">
+								<h5>Let us set it up</h5>
+								<p>Done-for-you services by the team that built this theme.</p>
+							</div>
+							<ul class="txr-ssvc__list">
+								<li><a href="services.html#svc-install"><span class="txr-ssvc__ico"><svg class="txr-i" aria-hidden="true"><use href="#i-wrench"></use></svg></span><span class="txr-ssvc__name"><strong>Theme installation</strong>Demo setup in 24h</span><span class="txr-ssvc__price">$49</span></a></li>
+								<li><a href="services.html#svc-customization"><span class="txr-ssvc__ico"><svg class="txr-i" aria-hidden="true"><use href="#i-palette"></use></svg></span><span class="txr-ssvc__name"><strong>Theme customization</strong>Your brand &amp; content</span><span class="txr-ssvc__price">$199</span></a></li>
+								<li><a href="services.html#ui-design"><span class="txr-ssvc__ico"><svg class="txr-i" aria-hidden="true"><use href="#i-pen"></use></svg></span><span class="txr-ssvc__name"><strong>UI/UX design</strong>Custom pages in Figma</span><span class="txr-ssvc__price">$349</span></a></li>
+								<li><a href="services.html#svc-speed"><span class="txr-ssvc__ico"><svg class="txr-i" aria-hidden="true"><use href="#i-gauge"></use></svg></span><span class="txr-ssvc__name"><strong>Speed optimization</strong>Core Web Vitals in the green</span><span class="txr-ssvc__price">$149</span></a></li>
+								<li><a href="services.html#svc-care"><span class="txr-ssvc__ico"><svg class="txr-i" aria-hidden="true"><use href="#i-shield"></use></svg></span><span class="txr-ssvc__name"><strong>Care &amp; maintenance</strong>Updates, backups &amp; security</span><span class="txr-ssvc__price">$79<small>/mo</small></span></a></li>
+							</ul>
+							<a href="services.html" class="txr-btn txr-btn--dark txr-btn--sm txr-btn--block">View all services <svg class="txr-i txr-i--arrow" aria-hidden="true"><use href="#i-arrow-right"></use></svg></a>
+						</div>
+
+						<!-- order a website -->
+						<div class="txr-sorder">
+							<span class="txr-sorder__float txr-sorder__float--1" aria-hidden="true"><svg class="txr-i" aria-hidden="true"><use href="#i-sparkle"></use></svg></span>
+							<span class="txr-sorder__float txr-sorder__float--2" aria-hidden="true"><svg class="txr-i" aria-hidden="true"><use href="#i-pen"></use></svg></span>
+							<h5>Order a website designed for <span>your needs</span></h5>
+							<p>Our team designs and builds a custom site around your brand, with fixed prices and clear deadlines.</p>
+							<a href="services.html#packages" class="txr-btn txr-btn--light txr-btn--sm">See all pricing plans <svg class="txr-i txr-i--arrow" aria-hidden="true"><use href="#i-arrow-right"></use></svg></a>
+						</div>
+
+						<div class="txr-bside__news">
+							<svg class="txr-i" aria-hidden="true"><use href="#i-mail"></use></svg>
+							<h5>The weekly WordPress tip</h5>
+							<p>One practical tip every Thursday. Join 18,000+ site owners.</p>
+							<form onsubmit="return false"><input type="email" placeholder="you@company.com" aria-label="Email" required><button class="txr-btn txr-btn--dark txr-btn--block" type="submit">Subscribe free</button></form>
+						</div>
+					</aside>
+				</div>
+			</div>
+		</section>
+
+		<section class="txr-section txr-section--soft">
+			<div class="txr-container">
+				<div class="txr-head txr-head--row">
+					<div class="txr-head__text"><span class="txr-eyebrow">Keep reading</span><h2 class="txr-title txr-title--sm" style="margin-top:18px">Related articles</h2></div>
+					<a href="blog.html" class="txr-btn txr-btn--ghost">All articles <svg class="txr-i txr-i--up" aria-hidden="true"><use href="#i-arrow-up-right"></use></svg></a>
+				</div>
+				<div class="txr-blog3"><article class="txr-bcard" data-cat="tutorials">
+	<a href="blog-details.html" class="txr-bcard__img wa-fix"><div class="wa-img-contain wa-zoom"><img src="assets/img/blog/blog-img-2.png" alt="How to Create a WordPress Child Theme Safely (No Code Lost)" loading="lazy"></div><span class="txr-chip txr-bcard__cat">Tutorials</span></a>
+	<div class="txr-bcard__meta"><span><svg class="txr-i" aria-hidden="true"><use href="#i-calendar"></use></svg>Oct 12, 2026</span><span><svg class="txr-i" aria-hidden="true"><use href="#i-clock"></use></svg>6 min read</span></div>
+	<h3 class="txr-bcard__title"><a href="blog-details.html">How to Create a WordPress Child Theme Safely (No Code Lost)</a></h3>
+	<p class="txr-bcard__excerpt">Keep your customizations through every theme update with a five-minute child theme setup.</p>
+	<a href="blog-details.html" class="txr-link txr-bcard__more">Read article <svg class="txr-i txr-i--up" aria-hidden="true"><use href="#i-arrow-up-right"></use></svg></a>
+</article>
+<article class="txr-bcard" data-cat="performance">
+	<a href="blog-details.html" class="txr-bcard__img wa-fix"><div class="wa-img-contain wa-zoom"><img src="assets/img/blog/blog-img-4.png" alt="12 Ways to Make Your WordPress Site Load in Under 2 Seconds" loading="lazy"></div><span class="txr-chip txr-bcard__cat">Performance</span></a>
+	<div class="txr-bcard__meta"><span><svg class="txr-i" aria-hidden="true"><use href="#i-calendar"></use></svg>Oct 29, 2026</span><span><svg class="txr-i" aria-hidden="true"><use href="#i-clock"></use></svg>9 min read</span></div>
+	<h3 class="txr-bcard__title"><a href="blog-details.html">12 Ways to Make Your WordPress Site Load in Under 2 Seconds</a></h3>
+	<p class="txr-bcard__excerpt">Caching, image formats, font loading and the three plugins we remove first on every speed project.</p>
+	<a href="blog-details.html" class="txr-link txr-bcard__more">Read article <svg class="txr-i txr-i--up" aria-hidden="true"><use href="#i-arrow-up-right"></use></svg></a>
+</article>
+<article class="txr-bcard" data-cat="elementor">
+	<a href="blog-details.html" class="txr-bcard__img wa-fix"><div class="wa-img-contain wa-zoom"><img src="assets/img/blog/blog-img-3.png" alt="Elementor Free vs Pro: What You Actually Need for a Business Site" loading="lazy"></div><span class="txr-chip txr-bcard__cat">Elementor</span></a>
+	<div class="txr-bcard__meta"><span><svg class="txr-i" aria-hidden="true"><use href="#i-calendar"></use></svg>Nov 03, 2026</span><span><svg class="txr-i" aria-hidden="true"><use href="#i-clock"></use></svg>7 min read</span></div>
+	<h3 class="txr-bcard__title"><a href="blog-details.html">Elementor Free vs Pro: What You Actually Need for a Business Site</a></h3>
+	<p class="txr-bcard__excerpt">We compare the features that matter to real businesses, and when the free version is genuinely enough.</p>
+	<a href="blog-details.html" class="txr-link txr-bcard__more">Read article <svg class="txr-i txr-i--up" aria-hidden="true"><use href="#i-arrow-up-right"></use></svg></a>
+</article></div>
+			</div>
+		</section>
+
+	<section class="txr-endcta">
+		<div class="txr-container">
+			<div class="txr-endcta__card">
+				<div>
+					<h2 class="txr-endcta__title">Your next website is one click away.</h2>
+					<p class="txr-endcta__text">Pick a theme and launch today, or let our team build it for you. Either way, you're covered by a 30-day money-back guarantee.</p>
+					<div class="txr-endcta__btns">
+						<a href="products.html" class="txr-btn txr-btn--light txr-btn--lg" data-txr-magnetic>Browse themes <svg class="txr-i txr-i--arrow" aria-hidden="true"><use href="#i-arrow-right"></use></svg></a>
+						<a href="services.html#quote" class="txr-btn txr-btn--glass txr-btn--lg">Hire our team</a>
+					</div>
+				</div>
+				<div class="txr-endcta__stack" aria-hidden="true">
+					<div class="txr-endcta__shot wa-img-cover wa-fix wa-img-top"><img src="assets/img-2/themes/themes-ss-9.jpg" alt="" loading="lazy"></div>
+					<div class="txr-endcta__shot wa-img-cover wa-fix wa-img-top"><img src="assets/img-2/themes/themes-ss-4.jpg" alt="" loading="lazy"></div>
+					<div class="txr-endcta__shot wa-img-cover wa-fix wa-img-top"><img src="assets/img-2/themes/themes-ss-6.jpg" alt="" loading="lazy"></div>
+				</div>
+			</div>
 		</div>
-		<!-- breadcrumb-area-end -->
+	</section>
+	</main>
 
-        <!-- blog-start -->
-        <div class="txa-blog-details-area pt-130 pb-130">
-            <div class="container txa-container-1">
-                <div class="txa-blog-details-content">
-                    <div class="txa-blog-details-content-border">
+	<footer class="txr-footer">
+		<div class="txr-container">
+			<div class="txr-footer__news">
+				<div>
+					<h5>Get new themes &amp; exclusive deals first</h5>
+					<p>One email a month. Unsubscribe in one click. 18,000+ subscribers.</p>
+				</div>
+				<form class="txr-footer__form" onsubmit="return false">
+					<input type="email" placeholder="Your email address" aria-label="Email address" required>
+					<button class="txr-btn txr-btn--primary txr-btn--sm" type="submit">Subscribe</button>
+				</form>
+			</div>
 
-                        <!-- img -->
-                        <div class="txa-blog-details-img ">
-                            <img src="assets/img/blog/blog-details-img-1.png" alt="">
-                        </div>
+			<div class="txr-footer__top" style="margin-top:70px">
+				<div class="txr-footer__brand">
+					<div class="txr-footer__logo wa-img-cover wa-fix"><img src="assets/img/logo/themexriver-logo-1.svg" alt="themeXriver" loading="lazy"></div>
+					<p>Premium WordPress themes and expert web services, trusted by 40,000+ businesses in 150+ countries since 2014.</p>
+					<div class="txr-footer__social">
+						<a href="#" aria-label="X / Twitter"><svg class="txr-i" aria-hidden="true"><use href="#i-x"></use></svg></a><a href="#" aria-label="Facebook"><svg class="txr-i" aria-hidden="true"><use href="#i-facebook"></use></svg></a><a href="#" aria-label="LinkedIn"><svg class="txr-i" aria-hidden="true"><use href="#i-linkedin"></use></svg></a><a href="#" aria-label="Dribbble"><svg class="txr-i" aria-hidden="true"><use href="#i-dribbble"></use></svg></a><a href="#" aria-label="YouTube"><svg class="txr-i" aria-hidden="true"><use href="#i-youtube"></use></svg></a>
+					</div>
+				</div>
+				<div class="txr-footer__col"><h6>Products</h6><ul>
+					<li><a href="products.html">All themes</a></li><li><a href="products.html">New releases <em>New</em></a></li><li><a href="products.html">Best sellers</a></li><li><a href="products.html">Free themes</a></li><li><a href="access.html">All Access</a></li></ul></div>
+				<div class="txr-footer__col"><h6>Services</h6><ul>
+					<li><a href="services.html#svc-install">Theme installation</a></li><li><a href="services.html#svc-customization">Customization</a></li><li><a href="services.html#ui-design">UI/UX design</a></li><li><a href="services.html#svc-website">Complete website</a></li><li><a href="services.html#svc-speed">Speed optimization</a></li><li><a href="services.html#svc-care">Maintenance</a></li></ul></div>
+				<div class="txr-footer__col"><h6>Company</h6><ul>
+					<li><a href="about.html">About us</a></li><li><a href="about.html#careers">Careers</a></li><li><a href="affiliates.html">Affiliates</a></li><li><a href="blog.html">Blog</a></li><li><a href="support.html">Contact</a></li></ul></div>
+				<div class="txr-footer__col"><h6>Support</h6><ul>
+					<li><a href="faqs.html">Documentation</a></li><li><a href="changelog.html">Changelog</a></li><li><a href="support.html#ticket">Open a ticket</a></li><li><a href="faqs.html">FAQ</a></li><li><a href="refund.html">Refund policy</a></li><li><a href="terms.html">Support policy</a></li></ul></div>
+			</div>
 
-                        <!-- meta -->
-                        <div class="txa-blog-details-meta mb-40">
-                            <span class="meta-item txa-heading-2"><i class="flaticon-user"></i>By Admin</span>
-                            <span class="meta-item txa-heading-2"><i class="flaticon-sms"></i>(2) Comments</span>
-                            <span class="meta-item txa-heading-2"><i class="flaticon-calendar-2"></i>22 March 2023</span>
-                        </div>
+			<div class="txr-footer__trust">
+				<span><svg class="txr-i" aria-hidden="true"><use href="#i-award"></use></svg>Envato Elite Author</span>
+				<span><svg class="txr-i" aria-hidden="true"><use href="#i-undo"></use></svg>30-day money-back guarantee</span>
+				<span><svg class="txr-i" aria-hidden="true"><use href="#i-lock"></use></svg>256-bit SSL secure checkout</span>
+				<span><svg class="txr-i" aria-hidden="true"><use href="#i-headset"></use></svg>Human support, 7 days a week</span>
+			</div>
 
-                        <!-- title -->
-                        <h3 class="txa-blog-details-title txa-heading-2">Best Digital Agency WordPress theme</h3>
+			<div class="txr-footer__bottom">
+				<span>© 2026 themeXriver. All rights reserved.</span>
+				<ul><li><a href="terms.html">Terms</a></li><li><a href="privacy.html">Privacy</a></li><li><a href="copyright.html">Copyright</a></li><li><a href="refund.html">Refunds</a></li></ul>
+				<div class="txr-footer__pay wa-img-cover wa-fix"><img src="assets/img/footer/payment-option.png" alt="Accepted payments: Visa, Mastercard, PayPal and more" loading="lazy"></div>
+			</div>
+		</div>
+		<div class="txr-footer__mark" aria-hidden="true">themeXriver</div>
+	</footer>
 
-                        <p class="txa-para-2 txa-blog-details-disc">Any Digital Agency first has to build a great website for their marketing. However, developing a website takes time and effort. Using WordPress to construct a professional digital agency website is a great option. If you want to start or manage successful digital marketing, you need a reputable website.</p>
+	<button class="txr-totop" type="button" aria-label="Back to top">
+		<svg class="txr-totop__ring" viewBox="0 0 50 50" aria-hidden="true"><circle cx="25" cy="25" r="23"></circle></svg>
+		<svg class="txr-i" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+	</button>
 
-                        <p class="txa-para-2 txa-blog-details-disc">Moreover, this article will discuss the unique WordPress theme of digital agency. You can find a solution for a fraction of the features and price. In contrast, It is also not only about saving money but also a good idea for your future website.</p>
-
-                        <p class="txa-para-2 txa-blog-details-disc">The themes listed below have been tested and confirmed to be the Most signeficant WordPress themes for digital agencies. So let’s have a look at the over 40 Best Digital Agency WordPress themes for 2022 to help you grow your business.</p>
-
-                        <!-- subtitle -->
-                        <h5 class="txa-blog-details-subtitle txa-heading-2 text-center">1.Choicy</h5>
-
-                        <!-- inner-img -->
-                        <div class="txa-blog-details-inner-img img-cover">
-                            <img src="assets/img/blog/blog-details-img-2.png" alt="">
-                            <div class="txa-blog-details-themes-btn">
-                                <a class="themes-btn txa-pr-btn-1" id="pr-btn-1" href="#" aria-label="name" ><span class="txt">More Info/Download</span></a> 
-                                <a class="demo-btn txa-pr-btn-1" id="pr-btn-1" href="#" aria-label="name" ><span class="txt">Demo</span></a>
-                            </div>
-                        </div>
-
-                        <p class="txa-para-2 txa-blog-details-disc">Ximsa is a WordPress theme designed for startups, SaaS businesses, and Startup Agencies. However, it’s more of a sleek, sophisticated theme for Startup Agencies and SaaS companies. The theme is ideally suited for agencies, digital agencies, startup agencies, creative agencies, multipurpose creative agencies, freelancers, SaaS, Business, Consulting, and App development firms.</p>
-
-                        <p class="txa-para-2 txa-blog-details-disc">Furthermore, It has a distinctive style that has amazing capabilities for those who wish to create their own websites.</p>
-
-                        <!-- subtitle -->
-                        <h5 class="txa-blog-details-subtitle txa-heading-2 ">Feature</h5>
-
-                        <!-- feature-list -->
-                        <ul class="txa-blog-details-feature-list mb-20" >
-                            <li class="txa-para-2"><i class="flaticon-checked"></i>Slider Revolution has been added.</li>
-                            <li class="txa-para-2"><i class="flaticon-checked"></i>Compatible with WooCommerce.</li>
-                            <li class="txa-para-2"><i class="flaticon-checked"></i>Optimized for retina displays, Contact Form 7 compatible.</li>
-                            <li class="txa-para-2"><i class="flaticon-checked"></i>Additionally, Compatible with child themes.</li>
-                            <li class="txa-para-2"><i class="flaticon-checked"></i>Enhanced typography options.</li>
-                            <li class="txa-para-2"><i class="flaticon-checked"></i>Twelve amazing home pages.</li>
-                            <li class="txa-para-2"><i class="flaticon-checked"></i>Twelve Unique Header Styles.</li>
-                            <li class="txa-para-2"><i class="flaticon-checked"></i>Customizable colors.</li>
-                            <li class="txa-para-2"><i class="flaticon-checked"></i>Contemporary Design.</li>
-                            <li class="txa-para-2"><i class="flaticon-checked"></i>Using HTML5 and CSS3.</li>
-                            <li class="txa-para-2"><i class="flaticon-checked"></i>Based on the latest Bootstrap framework.</li>
-                            <li class="txa-para-2"><i class="flaticon-checked"></i>Limitless color options.</li>
-                            <li class="txa-para-2"><i class="flaticon-checked"></i>Static menu when scrolling down.</li>
-                            <li class="txa-para-2"><i class="flaticon-checked"></i>Flexible portfolio with responsive filters.</li>
-                            <li class="txa-para-2"><i class="flaticon-checked"></i>In contrast, Stunning design.</li>
-                        </ul>
-
-                        <!-- subtitle -->
-                        <h5 class="txa-blog-details-subtitle txa-heading-2 text-center">2.Gesto</h5>
-
-                        <!-- inner-img -->
-                        <div class="txa-blog-details-inner-img img-cover">
-                            <img src="assets/img/blog/blog-details-img-3.png" alt="">
-                            <div class="txa-blog-details-themes-btn">
-                                <a class="themes-btn txa-pr-btn-1" href="#" aria-label="name" ><span class="txt">More Info/Download</span></a>
-                                <a class="demo-btn txa-pr-btn-1" href="#" aria-label="name" ><span class="txt">Demo</span></a>
-                            </div>
-                        </div>
-
-                        <p class="txa-para-2 txa-blog-details-disc">Gecto is a popular and creative digital agency WordPress theme with over 31000 clients worldwide. Moreover, Our list of over 40 Best Digital Agency WordPress Themes in 2022 came in number one position.</p>
-
-                        <p class="txa-para-2 txa-blog-details-disc">It includes high-quality, demonstrations that are completely SEO optimized, so you do not have to waste time on tedious SEO optimization. In addition, its Digital Agency demo is expertly developed to meet the requirements of digital marketing firms.</p>
-
-                        <p class="txa-para-2 txa-blog-details-disc">Oshine offers the greatest customer service to its consumers, which is why it ranks first on our list of the best Digital Agency WordPress themes.</p>
-
-                        <!-- subtitle -->
-                        <h5 class="txa-blog-details-subtitle txa-heading-2 ">Feature</h5>
-
-                        <!-- feature-list -->
-                        <ul class="txa-blog-details-feature-list mb-20" >
-                            <li class="txa-para-2"><i class="flaticon-checked"></i>Fifty two pre-built beautiful demos for almost every industry niche.</li>
-                            <li class="txa-para-2"><i class="flaticon-checked"></i>Including a complete functional optical page builder</li>
-                            <li class="txa-para-2"><i class="flaticon-checked"></i>Highly ranked on Themeforest.</li>
-                            <li class="txa-para-2"><i class="flaticon-checked"></i>Strong customer support.</li>
-                            <li class="txa-para-2"><i class="flaticon-checked"></i>Super fast loading speed and fully SEO optimized.</li>
-                        </ul>
-
-                        <!-- subtitle -->
-                        <h5 class="txa-blog-details-subtitle txa-heading-2 text-center">3.Haptic</h5>
-
-                        <!-- inner-img -->
-                        <div class="txa-blog-details-inner-img img-cover">
-                            <img src="assets/img/blog/blog-details-img-4.png" alt="">
-                            <div class="txa-blog-details-themes-btn">
-                                <a class="themes-btn txa-pr-btn-1" href="#" aria-label="name" ><span class="txt">More Info/Download</span></a>
-                                <a class="demo-btn txa-pr-btn-1" href="#" aria-label="name" ><span class="txt">Demo</span></a>
-                            </div>
-                        </div>
-
-                        <p class="txa-para-2 txa-blog-details-disc">Haptic is a popular and creative digital agency WordPress theme with over 31000 clients worldwide. Moreover, Our list of over 40 Best Digital Agency WordPress Themes in 2022 came in number one position.</p>
-
-                        <p class="txa-para-2 txa-blog-details-disc">It includes high-quality, demonstrations that are completely SEO optimized, so you do not have to waste time on tedious SEO optimization. In addition, its Digital Agency demo is expertly developed to meet the requirements of digital marketing firms.</p>
-
-                        <!-- subtitle -->
-                        <h5 class="txa-blog-details-subtitle txa-heading-2 ">Feature</h5>
-
-                        <!-- feature-list -->
-                        <ul class="txa-blog-details-feature-list" >
-                            <li class="txa-para-2"><i class="flaticon-checked"></i>Fifty two pre-built beautiful demos for almost every industry niche.</li>
-                            <li class="txa-para-2"><i class="flaticon-checked"></i>Including a complete functional optical page builder</li>
-                            <li class="txa-para-2"><i class="flaticon-checked"></i>Highly ranked on Themeforest.</li>
-                            <li class="txa-para-2"><i class="flaticon-checked"></i>Strong customer support.</li>
-                            <li class="txa-para-2"><i class="flaticon-checked"></i>Super fast loading speed and fully SEO optimized.</li>
-                        </ul>
-
-                    </div>
-
-                    <!-- blog-share -->
-                    <div class="txa-blog-details-tags-share mb-30">
-                        <div class="txa-blog-details-tags">
-                            <h6 class="title txa-heading-2">tags:</h6>
-                            <a class="txa-para-1" aria-label="tags" href="#">agency</a>
-                            <a class="txa-para-1"  aria-label="tags" href="#">business</a>
-                            <a class="txa-para-1"  aria-label="tags" href="#">marketing</a>
-                            <a class="txa-para-1"  aria-label="tags" href="#">Digital Agency</a>
-                        </div>
-                        <div class="txa-blog-details-share">
-                            <h6 class="title txa-heading-2">Share Article:</h6>
-                            <a href="#" aria-label="social link" >
-                                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M18 0C21.3526 0.0382568 24.3813 0.862213 27.0861 2.47187C29.7587 4.04939 31.9819 6.28618 33.5431 8.96835C35.143 11.6895 35.962 14.7365 36.0001 18.1095C35.9051 22.7245 34.4495 26.6662 31.6333 29.9345C28.817 33.2029 25.2101 35.2249 21.4763 36V23.0609H25.0063L25.8046 17.9762H20.4593V14.6458C20.4296 13.9554 20.648 13.2771 21.0749 12.7337C21.5023 12.1888 22.2551 11.9023 23.3332 11.8744H26.561V7.42031C26.5147 7.40541 26.0753 7.34649 25.2426 7.24354C24.2983 7.13306 23.3488 7.07404 22.3981 7.06676C20.2463 7.07669 18.5446 7.68365 17.2929 8.88764C16.0411 10.0913 15.4017 11.8327 15.3746 14.1119V17.9762H11.3068V23.0609H15.3746V36C10.79 35.2249 7.18304 33.2029 4.36681 29.9345C1.55058 26.6662 0.0950269 22.7245 0 18.1095C0.0380195 14.7364 0.856995 11.6893 2.45693 8.96835C4.01815 6.28618 6.24136 4.04939 8.91397 2.47187C11.6187 0.862523 14.6474 0.0385667 18 0Z" fill="#3A5897"/>
-                                    </svg>
-                                    
-                            </a>
-                            <a href="#" aria-label="social link" >
-                                <svg width="37" height="36" viewBox="0 0 37 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <g clip-path="url(#clip0_68_1258)">
-                                    <path d="M18.5703 0C8.62953 0 0.570312 8.05922 0.570312 18C0.570312 27.9408 8.62953 36 18.5703 36C28.5111 36 36.5703 27.9408 36.5703 18C36.5703 8.05922 28.5111 0 18.5703 0Z" fill="black"/>
-                                    <path d="M20.5412 16.371L28.2468 7.41394H26.4209L19.7301 15.1913L14.3862 7.41394H8.22266L16.3036 19.1746L8.22266 28.5676H10.0487L17.1144 20.3544L22.7579 28.5676H28.9214L20.5408 16.371H20.5412ZM10.7067 8.7886H13.5114L26.4217 27.2554H23.6169L10.7067 8.7886Z" fill="white"/>
-                                    </g>
-                                    <defs>
-                                    <clipPath id="clip0_68_1258">
-                                    <rect width="36" height="36" fill="white" transform="translate(0.570312)"/>
-                                    </clipPath>
-                                    </defs>
-                                    </svg>
-                                    
-                            </a>
-                            <a href="#" aria-label="social link" >
-                                <svg width="37" height="36" viewBox="0 0 37 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M18.189 0C8.23344 0 0.144531 8.02935 0.144531 18.0002C0.144531 27.9706 8.23344 36 18.189 36C28.1446 36 36.1446 27.9706 36.1446 18.0002C36.1446 8.02935 28.1446 0 18.189 0ZM19.6112 22.8531C18.2779 22.7647 17.7446 22.0591 16.6779 21.4414C16.1446 24.4411 15.4335 27.2645 13.389 28.7646C12.7668 24.2648 14.2779 20.912 14.989 17.2941C13.7446 15.2647 15.1668 11.0296 17.7446 12.0882C20.9446 13.3237 14.989 19.8529 18.989 20.6469C23.2557 21.5293 24.9446 13.3237 22.3668 10.6765C18.5445 6.8823 11.3446 10.5881 12.2335 16.0587C12.5001 17.3825 13.8335 17.8235 12.8557 19.6766C10.3668 19.1473 9.65568 17.2057 9.74454 14.7354C9.92231 10.5881 13.4779 7.67627 17.1224 7.23534C21.6557 6.70601 25.9224 8.91173 26.4557 13.1469C27.1668 18.0002 24.4113 23.2061 19.6112 22.8531Z" fill="#E8170E"/>
-                                    </svg>
-                                    
-                            </a>
-                            <a href="#" aria-label="social link" >
-                                <svg width="37" height="36" viewBox="0 0 37 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <g clip-path="url(#clip0_68_1252)">
-                                    <path d="M18.7109 0C15.1509 0 11.6708 1.05568 8.71068 3.03355C5.7506 5.01141 3.44349 7.82263 2.08111 11.1117C0.718737 14.4008 0.362277 18.02 1.05681 21.5116C1.75134 25.0033 3.46568 28.2106 5.98302 30.7279C8.50037 33.2453 11.7077 34.9596 15.1993 35.6541C18.691 36.3487 22.3102 35.9922 25.5992 34.6298C28.8883 33.2675 31.6995 30.9603 33.6774 28.0003C35.6553 25.0402 36.7109 21.5601 36.7109 18C36.7109 13.2261 34.8145 8.64773 31.4389 5.27208C28.0632 1.89642 23.4848 0 18.7109 0ZM13.4767 27.4737H9.54989V14.8239H13.4767V27.4737ZM11.5109 13.0974C11.059 13.0992 10.6167 12.9671 10.2398 12.7176C9.86301 12.4681 9.5686 12.1125 9.39382 11.6958C9.21904 11.279 9.17174 10.8198 9.2579 10.3761C9.34406 9.93249 9.55981 9.52435 9.87788 9.2033C10.1959 8.88225 10.6021 8.66271 11.0449 8.57241C11.4877 8.48212 11.9473 8.52514 12.3657 8.69603C12.7841 8.86692 13.1424 9.158 13.3954 9.5325C13.6484 9.90699 13.7847 10.3481 13.787 10.8C13.7883 11.406 13.5496 11.9879 13.123 12.4184C12.6965 12.8489 12.1169 13.093 11.5109 13.0974ZM28.1846 27.4737H24.2602V21.3158C24.2602 19.8474 24.2317 17.9645 22.2186 17.9645C20.2054 17.9645 19.8502 19.5608 19.8502 21.2092V27.4737H15.9399V14.8239H19.708V16.5482H19.7625C20.2859 15.5534 21.5673 14.5042 23.4786 14.5042C27.4528 14.5042 28.1846 17.1237 28.1846 20.5247V27.4737Z" fill="#007BB5"/>
-                                    </g>
-                                    <defs>
-                                    <clipPath id="clip0_68_1252">
-                                    <rect width="36" height="36" fill="white" transform="translate(0.710938)"/>
-                                    </clipPath>
-                                    </defs>
-                                    </svg>
-                                    
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <!-- next-blog -->
-                    <div class="txa-blog-details-next-post mb-60">
-                        <div class="btn-item">
-                            <div class="main-img img-cover">
-                                <img src="assets/img/blog/blog-img-1.png" alt="">
-                                <div class="arrow-btn">
-                                    <i class="flaticon-left-arrow"></i>
-                                </div>
-                            </div>
-                            <div class="content-wrap">
-                                <span class="txa-heading-2 date">January 6 , 2024</span>
-                                <h3 class="txa-heading-2 title">
-                                    <a href="#" aria-label="blog" >16 Best Consulting Website Template of 2024</a>
-                                </h3>
-                            </div>
-                        </div>
-                        <div class="btn-item">
-                            <div class="main-img img-cover">
-                                <img src="assets/img/blog/blog-img-2.png" alt="">
-                                <div class="arrow-btn">
-                                    <i class="flaticon-right-arrow"></i>
-                                </div>
-                            </div>
-                            <div class="content-wrap">
-                                <span class="txa-heading-2 date">January 6 , 2024</span>
-                                <h3 class="txa-heading-2 title">
-                                    <a href="#" aria-label="blog" >Best Technology WordPress Themes of </a>
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- comment-form -->
-                    <div class="txa-comment-form-wrap">
-                        <h6 class="title txa-heading-2">Leave A Comment</h6>
-                        <form class="txa-comment-form"  action="#">
-                            <input type="text" placeholder="first name" aria-label="name">
-                            <input type="text" placeholder="last name" aria-label="name">
-                            <input type="number" placeholder="phone number" aria-label="name">
-                            <input type="email" placeholder="email address" aria-label="name">
-                            <textarea name="" id="" cols="30" rows="10" placeholder="Write your comments here...."></textarea>
-                            <div class="btn-wrap">
-                                <button class="txa-pr-btn-1" type="button" ><span class="txt">Send Message</span></button>
-                            </div>
-                        </form>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <!-- blog-end -->
-
-        <!-- footer-start -->
-        <div class="txa-footer-1-area">
-
-            <div class="txa-footer-1-top pt-40 pb-40">
-                <div class="container txa-container-1">
-                    <div class="txa-footer-1-top-flex d-flex flex-wrap align-items-center justify-content-between">
-
-                        <!-- social-link -->
-                        <div class="txa-social-1 d-flex align-items-center flex-wrap">
-                            <a href="https://www.facebook.com/themexriver/" target="_blank" aria-label="themexriver facebook">
-                                <i class="flaticon-facebook-1"></i>
-                            </a>
-                            <a href="https://twitter.com/ThemeriverArt" target="_blank" aria-label="themexriver twitter">
-                                <i class="flaticon-twitter twitter"></i>
-                            </a>
-                            <a href="https://www.instagram.com/themexriver/" target="_blank" aria-label="themexriver instagram">
-                                <i class="flaticon-instagram"></i>
-                            </a>
-                            <a href="https://www.youtube.com/@themexriver" target="_blank" aria-label="themexriver youtube">
-                                <i class="flaticon-youtube"></i>
-                            </a>
-                        </div>
-
-                        <!-- footer-menu -->
-                        <ul class="txa-footer-1-menu has-footer-top">
-                            <li>
-                                <a href="blog.html" aria-label="nane" >blog</a>
-                            </li>
-                            <li>
-                                <a href="affiliates.html" aria-label="nane" >affiliates</a>
-                            </li>
-                            <li>
-                                <a href="hire-us.html" aria-label="nane" >pricing</a>
-                            </li>
-                            <li>
-                                <a href="themes-page.html" aria-label="nane" >downloads</a>
-                            </li>
-                            <li>
-                                <a href="themes-page.html" aria-label="nane" >live demo</a>
-                            </li>
-                        </ul>
-
-                    </div>
-                </div>
-            </div>
-
-            <!-- footer-widget -->
-            <div class="txa-footer-1-meddle pt-85 pb-70">
-                <div class="container txa-cotnainer-1">
-                    <div class="txa-footer-1-widget-wrap">
-    
-                        <!-- single-widget -->
-                        <div class="txa-footer-1-widget">
-                            <h3 class="title txa-heading-1" >company</h3>
-        
-                            <ul class="txa-footer-1-menu">
-                                <li>
-                                    <a href="about.html" aria-label="nane" >about</a>
-                                </li>
-                                <li>
-                                    <a href="career.html" aria-label="nane" >career</a>
-                                </li>
-                                <li>
-                                    <a href="hire-us.html" aria-label="nane" >hire us</a>
-                                </li>
-                                <li>
-                                    <a href="faqs.html" aria-label="nane" >FAQ"s</a>
-                                </li>
-                            </ul>
-                        </div>
-        
-                        <!-- single-widget -->
-                        <div class="txa-footer-1-widget">
-                            <h3 class="title txa-heading-1" >products</h3>
-        
-                            <ul class="txa-footer-1-menu">
-                                <li>
-                                    <a href="art-collection.html" aria-label="nane" >art collection</a>
-                                </li>
-                                <li>
-                                    <a href="themes-page.html" aria-label="nane" >wordpress themes</a>
-                                </li>
-                                <li>
-                                    <a href="template-page.html" aria-label="nane" >HTML templates</a>
-                                </li>
-                                <li>
-                                    <a href="plugin-page.html" aria-label="nane" >Plugins</a>
-                                </li>
-                            </ul>
-                        </div>
-        
-                        <!-- single-widget -->
-                        <div class="txa-footer-1-widget">
-                            <h3 class="title txa-heading-1" >supports</h3>
-        
-                            <ul class="txa-footer-1-menu">
-                                <li>
-                                    <a href="ducomentation.html" aria-label="nane" >documentation</a>
-                                </li>
-                                <li>
-                                    <a href="ticket.html" aria-label="nane" >forums</a>
-                                </li>
-                                <li>
-                                    <a href="contact-us.html" aria-label="nane" >contact us</a>
-                                </li>
-                                <li>
-                                    <a href="support-policy.html" aria-label="nane" >support policy</a>
-                                </li>
-                            </ul>
-                        </div>
-        
-                        <!-- single-widget -->
-                        <div class="txa-footer-1-widget">
-                            <h3 class="title txa-heading-1" >terms</h3>
-        
-                            <ul class="txa-footer-1-menu">
-                                <li>
-                                    <a href="terms.html" aria-label="nane" >terms of use</a>
-                                </li>
-                                <li>
-                                    <a href="copyright.html" aria-label="nane" >copyright notice</a>
-                                </li>
-                                <li>
-                                    <a href="refund-policy.html" aria-label="nane" >refound policy</a>
-                                </li>
-                                <li>
-                                    <a href="privacy-policy.html" aria-label="nane" >privacy policy</a>
-                                </li>
-                            </ul>
-                        </div>
-        
-                        <!-- single-widget -->
-                        <div class="txa-footer-1-widget">
-                            <h3 class="title txa-heading-1" >newsletter</h3>
-        
-                            <p class="txa-para-1 footer-disc">Dont’t miss any updates of our new templates and extensions and al the astonishing we bring for you.</p>
-        
-                            <form action="#" class="txa-search-form-1 has-newsletter">
-                                <input type="text" aria-label="name" placeholder="email address">
-                                <button class="txa-pr-btn-1 form-btn" type="button" aria-label="name"><span class="txt">subscribe</span></button>
-                            </form>
-                            
-                        </div>
-        
-                    </div>    
-                </div>
-            </div>
-
-
-            <!-- about company -->
-            <div class="txa-footer-1-about-title">
-                <div class="container txa-container-1">
-                    <h5 class="txa-heading-1 title">about company</h5>
-                </div>
-            </div>
-
-            <div class="container txa-container-1">
-                <div class="txa-footer-1-about-widget">
-
-                    <!-- single-widget -->
-                    <a href="#" aria-label="name" class="footer-logo" >
-                        <img src="assets/img/logo/themexriver-logo-1.svg" alt="">
-                    </a>
-    
-                    <p class="txa-para-1 about-disc">Discover thousands of easy to customize themes, templates & CMS products, made by world-class developers.</p>
-    
-                    <div class="txa-counter-1-wrap">
-                        <!-- single-item -->
-                        <div class="txa-counter-1-item">
-                            <h6 class="number txa-heading-1"><span class="counter" >247</span>k</h6>
-                            <p class="txa-para-1 disc">total products</p>
-                        </div>
-                        <!-- single-item -->
-                        <div class="txa-counter-1-item">
-                            <h6 class="number txa-heading-1"><span class="counter" >11.3</span>M+</h6>
-                            <p class="txa-para-1 disc">download</p>
-                        </div>
-                        <!-- single-item -->
-                        <div class="txa-counter-1-item">
-                            <h6 class="number txa-heading-1"><span class="counter" >3658</span></h6>
-                            <p class="txa-para-1 disc">registered users</p>
-                        </div>
-                    </div>
-    
-                </div>
-            </div>
-
-
-            <div class="txa-footer-1-bottom pt-40 pb-40">
-                <div class="container txa-container-1">
-                    <div class="txa-footer-1-bottom-flex d-flex align-items-center justify-content-between">
-                        <span class="txa-footer-1-copyright txa-para-1">© 2015 - 2024 Themexriver I All Rights Reserved</span>
-                        <div class="txa-payment-option-1">
-                            <span class="txa-heading-1 title">secure payments:</span>
-                            <a href="#" aria-label="name" class="option" >
-                                <img src="assets/img/footer/payment-option.png" alt="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <!-- footer-end -->
-
-        <div class="scroll-top">
-            <div class="scroll-top-wrap">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="injected-svg" data-src="https://static.elfsight.com/icons/app-back-to-top-arrow-3.svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="m7.997 10 3.515-3.79a.672.672 0 0 1 .89-.076l.086.075L16 10l-3 .001V18h-2v-7.999L7.997 10z"></path></svg>
-                <span class="text">
-                    to top
-                </span>
-            </div>
-        </div>
-        
-		<!-- JS here -->
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/js/swiper-bundle.min.js"></script>
-        <script src="assets/js/gsap.min.js"></script>
-        <script src="assets/js/magnific-popup.min.js"></script>
-        <script src="assets/js/counterup.min.js"></script>
-        <script src="assets/js/waypoints.min.js"></script>
-        <script src="assets/js/lenis.min.js"></script>
-        <script src="assets/js/ScrollTrigger.min.js"></script>
-        <script src="assets/js/main.js"></script>
-    </body>
+	<script src="assets/js/gsap.min.js"></script>
+	<script src="assets/js/ScrollTrigger.min.js"></script>
+	<script src="assets/js/txr-v2.js"></script>
+</body>
 </html>
-

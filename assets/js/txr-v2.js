@@ -391,6 +391,87 @@
 		tabLinks.forEach(function (l) { var s = $(l.getAttribute('href')); if (s) io.observe(s); });
 	}
 
+	/* ---------- login / sign up ---------- */
+	var auth = $('[data-txr-auth]');
+	if (auth) {
+		var setMode = function (mode) {
+			auth.setAttribute('data-mode', mode);
+			$$('.txr-auth__switch button', auth).forEach(function (b) {
+				var on = b.getAttribute('data-auth') === mode;
+				b.classList.toggle('is-active', on);
+				b.setAttribute('aria-selected', on);
+			});
+			$$('.txr-auth__panel', auth).forEach(function (p) { p.classList.toggle('is-active', p.getAttribute('data-panel') === mode); });
+		};
+		$$('[data-auth]', auth).forEach(function (b) { b.addEventListener('click', function () { setMode(b.getAttribute('data-auth')); }); });
+		if (location.hash === '#signup') setMode('signup');
+		// show / hide password
+		$$('[data-txr-eye]', auth).forEach(function (eye) {
+			eye.addEventListener('click', function () {
+				var input = eye.parentNode.querySelector('input');
+				var show = input.type === 'password';
+				input.type = show ? 'text' : 'password';
+				eye.classList.toggle('is-on', show);
+				eye.setAttribute('aria-label', show ? 'Hide password' : 'Show password');
+			});
+		});
+		// password strength
+		var pw = $('[data-txr-strength]', auth), meter = $('[data-txr-meter]', auth);
+		if (pw && meter) {
+			var hint = $('span', meter);
+			var words = ['Use 8+ characters with a number', 'Weak', 'Okay', 'Good', 'Strong'];
+			pw.addEventListener('input', function () {
+				var v = pw.value, lvl = 0;
+				if (v.length >= 8) lvl++;
+				if (/\d/.test(v)) lvl++;
+				if (/[A-Z]/.test(v) && /[a-z]/.test(v)) lvl++;
+				if (/[^A-Za-z0-9]/.test(v) || v.length >= 14) lvl++;
+				if (!v) lvl = 0;
+				meter.setAttribute('data-level', lvl);
+				hint.textContent = words[lvl];
+			});
+		}
+	}
+
+	/* ---------- dashboard ---------- */
+	var dash = $('[data-txr-dash]');
+	if (dash) {
+		var side = $('[data-txr-dash-side]', dash);
+		var openSide = function (on) { side.classList.toggle('is-open', on); document.body.style.overflow = on ? 'hidden' : ''; };
+		var showTab = function (tab) {
+			$$('.txr-dash__nav [data-tab]', dash).forEach(function (b) { b.classList.toggle('is-active', b.getAttribute('data-tab') === tab); });
+			$$('.txr-dash__panel', dash).forEach(function (p) { p.classList.toggle('is-active', p.getAttribute('data-panel') === tab); });
+			history.replaceState(null, '', '#' + tab);
+			window.scrollTo(0, 0);
+			openSide(false);
+		};
+		$$('[data-tab]', dash).forEach(function (b) { b.addEventListener('click', function () { showTab(b.getAttribute('data-tab')); }); });
+		$$('[data-goto]', dash).forEach(function (b) {
+			b.addEventListener('click', function (e) { e.preventDefault(); showTab(b.getAttribute('data-goto')); notif.classList.remove('is-open'); });
+		});
+		var start = location.hash.slice(1);
+		if (start && $('.txr-dash__panel[data-panel="' + start + '"]', dash)) showTab(start);
+		$$('[data-txr-dash-open]', dash).forEach(function (b) { b.addEventListener('click', function () { openSide(true); }); });
+		$$('[data-txr-dash-close]', dash).forEach(function (b) { b.addEventListener('click', function () { openSide(false); }); });
+		// notifications dropdown
+		var notif = $('.txr-dash__notif', dash);
+		var bell = $('[data-txr-notif]', dash);
+		bell.addEventListener('click', function (e) {
+			e.stopPropagation();
+			var open = !notif.classList.contains('is-open');
+			notif.classList.toggle('is-open', open);
+			bell.setAttribute('aria-expanded', open);
+		});
+		document.addEventListener('click', function (e) { if (!notif.contains(e.target)) notif.classList.remove('is-open'); });
+		// copy purchase codes
+		$$('[data-copy]', dash).forEach(function (b) {
+			b.addEventListener('click', function () {
+				var done = function () { b.classList.add('is-done'); setTimeout(function () { b.classList.remove('is-done'); }, 1500); };
+				if (navigator.clipboard) navigator.clipboard.writeText(b.getAttribute('data-copy')).then(done, done); else done();
+			});
+		});
+	}
+
 	/* ---------- help center: live question search (works with the category tabs) ---------- */
 	var faqSearch = $('[data-txr-faq-search]');
 	var faqList = $('#txr-faq-list');
