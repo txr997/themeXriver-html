@@ -208,15 +208,16 @@
 // ---------- blog layout ----------
 .txr-blog {
     display: grid;
-    grid-template-columns: 1fr 340px;
+    // minmax(0, 1fr): the nowrap category bar must scroll inside the column, not stretch it
+    grid-template-columns: minmax(0, 1fr) 340px;
     gap: 50px;
     align-items: start;
     @media #{$lg} {
-        grid-template-columns: 1fr 300px;
+        grid-template-columns: minmax(0, 1fr) 300px;
         gap: 30px;
     }
     @media #{$md, $xs} {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
     }
     &__head {
         display: flex;
@@ -231,10 +232,10 @@
     }
     &__grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 44px 30px;
         @media #{$xs} {
-            grid-template-columns: 1fr;
+            grid-template-columns: minmax(0, 1fr);
             gap: 36px;
         }
     }
@@ -242,6 +243,8 @@
 
 .txr-bside {
     display: grid;
+    // minmax(0, 1fr): the implicit auto column would grow to the widest widget's min-content (search input, price rows) and overflow the aside on phones
+    grid-template-columns: minmax(0, 1fr);
     align-content: start;
     gap: 20px;
     &__box {
@@ -516,8 +519,9 @@
         grid-template-columns: minmax(0, 1fr) 300px;
         gap: 30px;
     }
+    // minmax(0, 1fr): code blocks and tables scroll inside the article instead of widening the page
     @media #{$md, $xs} {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         gap: 40px;
     }
     &__share {
@@ -973,6 +977,8 @@
 // "top themes" list inside an article
 .txr-ptheme {
     display: grid;
+    // minmax(0, 1fr): a card can never be wider than the article column
+    grid-template-columns: minmax(0, 1fr);
     gap: 16px;
     &__item {
         position: relative;
@@ -994,7 +1000,7 @@
             gap: 18px;
         }
         @media #{$xs} {
-            grid-template-columns: 1fr;
+            grid-template-columns: minmax(0, 1fr);
             gap: 14px;
         }
     }
@@ -1092,7 +1098,15 @@
     }
     &__btns {
         display: flex;
+        flex-wrap: wrap;
         gap: 8px;
+        @media #{$xs} {
+            width: 100%;
+            .txr-btn {
+                flex: 1 1 auto;
+                justify-content: center;
+            }
+        }
     }
     .txr-prose &__all {
         text-align: center;
@@ -1196,7 +1210,7 @@
     border-radius: 22px;
     box-shadow: inset 0 0 0 1px var(--txr-line);
     @media #{$xs} {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
     }
     &__img {
         aspect-ratio: 1;
@@ -1338,6 +1352,7 @@
     }
     &__bubble {
         flex: 1;
+        min-width: 0;
         padding: 20px 22px;
         border-radius: 4px 20px 20px 20px;
         background: var(--txr-soft);

@@ -1145,22 +1145,25 @@
 // ---------- details layout ----------
 .txr-pd {
     display: grid;
-    grid-template-columns: 1fr 400px;
+    // minmax(0, 1fr): nothing in the buy box / sidebar may stretch the column past the screen
+    grid-template-columns: minmax(0, 1fr) 400px;
     gap: 50px;
     align-items: start;
     @media #{$lg} {
-        grid-template-columns: 1fr 360px;
+        grid-template-columns: minmax(0, 1fr) 360px;
         gap: 30px;
     }
     @media #{$md, $xs} {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
     }
     &__main {
         min-width: 0;
     }
     &__aside {
         display: grid;
+        grid-template-columns: minmax(0, 1fr);
         gap: 20px;
+        min-width: 0;
     }
 }
 
@@ -1177,6 +1180,10 @@
         padding: 0 18px;
         border-bottom: 1px solid var(--txr-line);
         background: var(--txr-soft);
+        @media #{$xs} {
+            gap: 10px;
+            padding: 0 12px;
+        }
     }
     &__dots {
         display: flex;
@@ -1195,6 +1202,8 @@
         display: flex;
         align-items: center;
         gap: 6px;
+        // the address clips instead of pushing the bar wider than the card
+        min-width: 0;
         max-width: 360px;
         height: 28px;
         margin: 0 auto;
@@ -1202,6 +1211,8 @@
         border-radius: 8px;
         background: #fff;
         font-size: 12px;
+        white-space: nowrap;
+        overflow: hidden;
         color: var(--txr-muted);
         .txr-i {
             color: var(--txr-green);
@@ -1252,11 +1263,12 @@
 
 .txr-highlights {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 14px;
     margin-top: 30px;
+    // phones: 2 per row, dropping to 1 when a pair no longer fits
     @media #{$xs} {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     }
     > div {
         display: flex;
@@ -1349,11 +1361,11 @@
 
 .txr-feat {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 16px;
     margin-top: 26px;
     @media #{$xs} {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
     }
     > div {
         padding: 22px;
@@ -1381,11 +1393,11 @@
 
 .txr-demos {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 18px;
     margin-top: 26px;
     @media #{$xs} {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 12px;
     }
     a {
@@ -1443,7 +1455,7 @@
     border-radius: 22px;
     background: var(--txr-soft);
     @media #{$xs} {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         gap: 24px;
         padding: 24px;
     }
@@ -1609,6 +1621,7 @@
     }
     &__total {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         justify-content: space-between;
         gap: 12px;
@@ -1674,6 +1687,7 @@
     }
     &__pay {
         width: 230px;
+        max-width: 100%;
     }
 }
 
@@ -1868,6 +1882,18 @@
         }
         .txr-i {
             color: var(--txr-star);
+        }
+        // very narrow phones: the label and the -90% badge wrap instead of clipping
+        @media #{$xs} {
+            &.txr-btn {
+                flex-wrap: wrap;
+                gap: 2px 6px;
+                height: auto;
+                min-height: 52px;
+                padding: 10px 16px;
+                white-space: normal;
+                text-align: center;
+            }
         }
     }
     &__note {
@@ -2442,9 +2468,6 @@
     transition: transform .5s var(--txr-ease);
     &.is-show {
         transform: none;
-    }
-    @media #{$md, $xs} {
-        display: flex;
     }
     small {
         display: block;
